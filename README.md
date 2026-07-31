@@ -37,6 +37,7 @@
 | RNF04 | O sistema deve responder às ações de busca, filtro e ordenação em até 1 segundo. | Média | RF04 |
 | RNF05 | O sistema deve funcionar nas versões atuais dos navegadores Chrome, Firefox e Edge. | Média | — |
 | RNF06 | O sistema deve manter padronização visual de cores, tipografia, botões e campos em todas as telas. | Média | — |
+| RNF07 | O sistema deve exibir mensagem orientativa quando uma listagem não possuir registros.	| Média | RF04 |
 
 ---
 
@@ -50,4 +51,4 @@
 | RN04 | O status de uma tarefa deve ser obrigatoriamente um entre "a fazer", "fazendo" e "concluído"; toda tarefa criada sem status definido inicia como "a fazer". | Alta | RF03 |
 | RN05 | Uma tarefa é considerada atrasada quando seu prazo é anterior à data atual e seu status é diferente de "concluído". | Alta | RF03 |
 | RN06 | O título e o prazo da tarefa são obrigatórios; o título deve conter no mínimo 3 caracteres e o prazo deve corresponder a uma data válida. | Alta | RF03 |
-| RN07 † | O progresso de um conteúdo corresponde à razão entre o peso das tarefas concluídas e o peso total das tarefas previstas; conteúdos sem tarefas cadastradas não entram no cálculo. | Alta | RF10 |
+| RN07 | O progresso de um conteúdo corresponde à razão entre o peso das tarefas concluídas e o peso total das tarefas previstas; conteúdos sem tarefas cadastradas não entram no cálculo. | Alta | RF10 |
