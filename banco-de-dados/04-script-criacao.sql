@@ -1,0 +1,206 @@
+-- =====================================================================
+-- Vértice — Plataforma de Acompanhamento de Aprendizagem
+-- Script de criação do banco de dados
+-- Entrega 2 · Modelagem do Banco de Dados · Equipe 7
+--
+-- Dialeto: MySQL 8. As restrições CHECK são suportadas a partir do 8.0.16.
+-- A ordem de criação respeita as dependências de chave estrangeira.
+-- =====================================================================
+
+CREATE DATABASE IF NOT EXISTS vertice
+    DEFAULT CHARACTER SET utf8mb4
+    DEFAULT COLLATE utf8mb4_unicode_ci;
+
+USE vertice;
+
+-- ---------------------------------------------------------------------
+-- grupo — raiz da estrutura (RF01)
+-- ---------------------------------------------------------------------
+CREATE TABLE grupo (
+    id_grupo      INT           NOT NULL AUTO_INCREMENT,
+    nome          VARCHAR(80)   NOT NULL,
+    descricao     VARCHAR(255)  NULL,
+    data_criacao  DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_grupo PRIMARY KEY (id_grupo)
+);
+
+-- ---------------------------------------------------------------------
+-- membro — integrantes do grupo (RF02)
+-- ON DELETE CASCADE atende à RN02
+-- ---------------------------------------------------------------------
+CREATE TABLE membro (
+    id_membro  INT          NOT NULL AUTO_INCREMENT,
+    id_grupo   INT          NOT NULL,
+    nome       VARCHAR(80)  NOT NULL,
+    funcao     VARCHAR(60)  NULL,
+    email      VARCHAR(120) NULL,
+    avatar     VARCHAR(60)  NULL,
+    perfil     VARCHAR(15)  NOT NULL DEFAULT 'participante',
+    CONSTRAINT pk_membro     PRIMARY KEY (id_membro),
+    CONSTRAINT fk_membro_grupo FOREIGN KEY (id_grupo)
+        REFERENCES grupo (id_grupo) ON DELETE CASCADE,
+    CONSTRAINT ck_membro_perfil
+        CHECK (perfil IN ('organizador', 'participante'))
+);
+
+-- ---------------------------------------------------------------------
+-- disciplina — agrupamento principal do estudo (RF13)
+-- ---------------------------------------------------------------------
+CREATE TABLE disciplina (
+    id_disciplina INT         NOT NULL AUTO_INCREMENT,
+    id_grupo      INT         NOT NULL,
+    nome          VARCHAR(80) NOT NULL,
+    cor           CHAR(7)     NULL,
+    data_criacao  DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_disciplina PRIMARY KEY (id_disciplina),
+    CONSTRAINT fk_disciplina_grupo FOREIGN KEY (id_grupo)
+        REFERENCES grupo (id_grupo) ON DELETE CASCADE,
+    CONSTRAINT uk_disciplina_nome UNIQUE (id_grupo, nome)
+);
+
+-- ---------------------------------------------------------------------
+-- conteudo — divisões da disciplina (RF14)
+-- Unidade base do cálculo de progresso (RN08)
+-- ---------------------------------------------------------------------
+CREATE TABLE conteudo (
+    id_conteudo   INT          NOT NULL AUTO_INCREMENT,
+    id_disciplina INT          NOT NULL,
+    nome          VARCHAR(80)  NOT NULL,
+    descricao     VARCHAR(255) NULL,
+    ordem         INT          NOT NULL DEFAULT 1,
+    CONSTRAINT pk_conteudo PRIMARY KEY (id_conteudo),
+    CONSTRAINT fk_conteudo_disciplina FOREIGN KEY (id_disciplina)
+        REFERENCES disciplina (id_disciplina) ON DELETE CASCADE,
+    CONSTRAINT uk_conteudo_nome UNIQUE (id_disciplina, nome)
+);
+
+-- ---------------------------------------------------------------------
+-- atividade — unidade de execução (RF03)
+-- Alimenta progresso (RN08), experiência (RN10) e ofensiva (RN11)
+-- ---------------------------------------------------------------------
+CREATE TABLE atividade (
+    id_atividade    INT          NOT NULL AUTO_INCREMENT,
+    id_conteudo     INT          NOT NULL,
+    id_responsavel  INT          NULL,
+    titulo          VARCHAR(120) NOT NULL,
+    descricao       TEXT         NULL,
+    prazo           DATE         NOT NULL,
+    peso            INT          NOT NULL DEFAULT 1,
+    prioridade      VARCHAR(10)  NULL,
+    status          VARCHAR(12)  NOT NULL DEFAULT 'a fazer',
+    data_criacao    DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    data_conclusao  DATE         NULL,
+    CONSTRAINT pk_atividade PRIMARY KEY (id_atividade),
+    CONSTRAINT fk_atividade_conteudo FOREIGN KEY (id_conteudo)
+        REFERENCES conteudo (id_conteudo) ON DELETE CASCADE,
+    CONSTRAINT fk_atividade_responsavel FOREIGN KEY (id_responsavel)
+        REFERENCES membro (id_membro) ON DELETE SET NULL,
+    CONSTRAINT ck_atividade_titulo     CHECK (CHAR_LENGTH(titulo) >= 3),
+    CONSTRAINT ck_atividade_peso       CHECK (peso BETWEEN 1 AND 5),
+    CONSTRAINT ck_atividade_prioridade CHECK (prioridade IN ('baixa', 'media', 'alta')),
+    CONSTRAINT ck_atividade_status     CHECK (status IN ('a fazer', 'fazendo', 'concluido'))
+);
+
+CREATE INDEX ix_atividade_status      ON atividade (status);
+CREATE INDEX ix_atividade_prazo       ON atividade (prazo);
+CREATE INDEX ix_atividade_responsavel ON atividade (id_responsavel, data_conclusao);
+
+-- ---------------------------------------------------------------------
+-- progresso_historico — fotografia diária do progresso (RF12)
+-- ---------------------------------------------------------------------
+CREATE TABLE progresso_historico (
+    id_progresso  INT           NOT NULL AUTO_INCREMENT,
+    id_disciplina INT           NOT NULL,
+    data_registro DATE          NOT NULL,
+    percentual    DECIMAL(5,2)  NOT NULL,
+    CONSTRAINT pk_progresso PRIMARY KEY (id_progresso),
+    CONSTRAINT fk_progresso_disciplina FOREIGN KEY (id_disciplina)
+        REFERENCES disciplina (id_disciplina) ON DELETE CASCADE,
+    CONSTRAINT uk_progresso_dia UNIQUE (id_disciplina, data_registro),
+    CONSTRAINT ck_progresso_percentual CHECK (percentual BETWEEN 0 AND 100)
+);
+
+-- ---------------------------------------------------------------------
+-- conquista — catálogo de marcos (RF17)
+-- ---------------------------------------------------------------------
+CREATE TABLE conquista (
+    id_conquista   INT          NOT NULL AUTO_INCREMENT,
+    codigo         VARCHAR(30)  NOT NULL,
+    nome           VARCHAR(60)  NOT NULL,
+    descricao      VARCHAR(160) NOT NULL,
+    icone          VARCHAR(10)  NULL,
+    criterio_tipo  VARCHAR(30)  NOT NULL,
+    criterio_valor INT          NOT NULL,
+    CONSTRAINT pk_conquista PRIMARY KEY (id_conquista),
+    CONSTRAINT uk_conquista_codigo UNIQUE (codigo),
+    CONSTRAINT ck_conquista_criterio CHECK (criterio_tipo IN (
+        'atividades_concluidas',
+        'conteudo_completo',
+        'disciplina_completa',
+        'ofensiva_dias',
+        'experiencia_total'
+    ))
+);
+
+-- ---------------------------------------------------------------------
+-- membro_conquista — tabela associativa do N:N (RN12)
+-- A chave primária composta impede a concessão duplicada
+-- ---------------------------------------------------------------------
+CREATE TABLE membro_conquista (
+    id_membro     INT      NOT NULL,
+    id_conquista  INT      NOT NULL,
+    data_obtencao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_membro_conquista PRIMARY KEY (id_membro, id_conquista),
+    CONSTRAINT fk_mc_membro FOREIGN KEY (id_membro)
+        REFERENCES membro (id_membro) ON DELETE CASCADE,
+    CONSTRAINT fk_mc_conquista FOREIGN KEY (id_conquista)
+        REFERENCES conquista (id_conquista) ON DELETE CASCADE
+);
+
+-- =====================================================================
+-- Carga inicial do catálogo de conquistas
+-- =====================================================================
+INSERT INTO conquista (codigo, nome, descricao, icone, criterio_tipo, criterio_valor) VALUES
+('PRIMEIRO_PASSO',    'Primeiro Passo',    'Conclua a sua primeira atividade',            '🌱', 'atividades_concluidas', 1),
+('CONTEUDO_DOMINADO', 'Conteúdo Dominado', 'Leve um conteúdo a 100% de progresso',        '📗', 'conteudo_completo',     1),
+('DISCIPLINA_FECHADA','Disciplina Fechada','Leve uma disciplina a 100% de progresso',     '🎓', 'disciplina_completa',   1),
+('SEMANA_CHEIA',      'Semana Cheia',      'Conclua atividades por 7 dias seguidos',      '🔥', 'ofensiva_dias',         7),
+('MES_CHEIO',         'Mês Cheio',         'Conclua atividades por 30 dias seguidos',     '🏔️', 'ofensiva_dias',        30),
+('MEIO_MILHAR',       'Meio Milhar',       'Acumule 500 pontos de experiência',           '⭐', 'experiencia_total',   500);
+
+-- =====================================================================
+-- Consultas de referência — as fórmulas das regras de negócio
+-- =====================================================================
+
+-- RN08 — progresso de cada conteúdo
+-- SELECT c.id_conteudo,
+--        c.nome,
+--        ROUND(SUM(CASE WHEN a.status = 'concluido' THEN a.peso ELSE 0 END)
+--              / NULLIF(SUM(a.peso), 0) * 100, 2) AS percentual
+-- FROM conteudo c
+-- JOIN atividade a ON a.id_conteudo = c.id_conteudo
+-- GROUP BY c.id_conteudo, c.nome;
+
+-- RN14 — progresso de cada disciplina
+-- SELECT d.id_disciplina,
+--        d.nome,
+--        ROUND(SUM(CASE WHEN a.status = 'concluido' THEN a.peso ELSE 0 END)
+--              / NULLIF(SUM(a.peso), 0) * 100, 2) AS percentual
+-- FROM disciplina d
+-- JOIN conteudo  c ON c.id_disciplina = d.id_disciplina
+-- JOIN atividade a ON a.id_conteudo   = c.id_conteudo
+-- GROUP BY d.id_disciplina, d.nome;
+
+-- RN10 — experiência acumulada por membro
+-- SELECT m.id_membro,
+--        m.nome,
+--        COALESCE(SUM(a.peso * 10), 0) AS experiencia
+-- FROM membro m
+-- LEFT JOIN atividade a
+--        ON a.id_responsavel = m.id_membro
+--       AND a.status = 'concluido'
+-- GROUP BY m.id_membro, m.nome;
+
+-- RN05 — atividades atrasadas
+-- SELECT * FROM atividade
+-- WHERE prazo < CURRENT_DATE AND status <> 'concluido';
