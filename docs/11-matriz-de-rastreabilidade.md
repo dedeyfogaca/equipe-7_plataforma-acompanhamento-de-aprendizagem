@@ -19,7 +19,7 @@ A matriz demonstra que os artefatos da Entrega 2 não foram produzidos separadam
 | **RF04** — Listar atividades com busca, filtros e ordenação | UC06 · Consultar atividades | atividade, conteudo, disciplina, membro | Atividades |
 | **RF05** — Exibir detalhe e alterar status | UC06 · Consultar atividades / UC07 · Concluir atividade | atividade, membro | Detalhe da atividade |
 | **RF06** — Painel com totais, atrasadas e próximas entregas | UC08 · Acompanhar progresso | atividade | Painel |
-| **RF07** — Sinalizar prazo em feriado nacional | UC06 · Consultar atividades / UC08 · Acompanhar progresso | atividade *(ator externo: BrasilAPI)* | Painel e Atividades |
+| **RF07** — Sinalizar prazo em feriado nacional | UC06 · Consultar atividades / UC08 · Acompanhar progresso | atividade *(atores externos: BrasilAPI e Nager.Date)* | Painel e Atividades |
 | **RF08** — Alternar tema claro e escuro | UC10 · Alternar tema | *nenhuma; preferência local do dispositivo* | Cabeçalho, em todas as telas |
 | **RF09** — Encerrar a sessão do grupo | UC11 · Encerrar sessão | grupo | Cabeçalho, em todas as telas |
 | **RF10** — Calcular e exibir progresso do conteúdo | UC08 · Acompanhar progresso | conteudo, atividade | Disciplinas e Painel |
@@ -31,8 +31,12 @@ A matriz demonstra que os artefatos da Entrega 2 não foram produzidos separadam
 | **RF16** — Calcular e exibir a ofensiva | UC07 · Concluir atividade / UC09 · Consultar painel de desempenho | atividade, membro | Desempenho |
 | **RF17** — Conceder e exibir conquistas | UC07 · Concluir atividade / UC09 · Consultar painel de desempenho | conquista, membro_conquista, membro | Desempenho |
 | **RF18** — Painel de desempenho do grupo | UC09 · Consultar painel de desempenho | membro, atividade, conquista, membro_conquista | Desempenho |
+| **RF19** — Gerar e sortear o avatar do membro | UC02 · Gerenciar membros | membro *(ator externo: DiceBear)* | Membros e Desempenho |
+| **RF20** — Carregar dados de exemplo | UC12 · Carregar dados de exemplo | grupo, membro, disciplina, conteudo, atividade | Acesso |
+| **RF21** — Relação dos próximos feriados nacionais | UC08 · Acompanhar progresso | *nenhuma; dado obtido de serviço externo* | Painel |
+| **RF22** — Sinalizar prazo em fim de semana | UC06 · Consultar atividades / UC08 · Acompanhar progresso | atividade | Painel, Atividades e Formulário de atividade |
 
-Os dezoito requisitos funcionais possuem caso de uso e tela. O único requisito sem entidade de dados é o RF08, porque a escolha do tema é uma preferência do dispositivo e não um dado do domínio.
+Os vinte e dois requisitos funcionais possuem caso de uso e tela. Dois não possuem entidade de dados, e em ambos o motivo é o mesmo: o dado não pertence ao domínio. No RF08 a escolha do tema é preferência do dispositivo; no RF21 os feriados vêm de serviço externo e não são armazenados como dado do sistema, apenas reaproveitados enquanto o serviço estiver fora do ar (RN17).
 
 ---
 
@@ -54,6 +58,9 @@ Os dezoito requisitos funcionais possuem caso de uso e tela. O único requisito 
 | **RN12** — conquista concedida uma única vez | UC07, passo 7 | Modelo lógico: chave primária composta em `membro_conquista` |
 | **RN13** — vínculo atividade–conteúdo–disciplina | UC05, passos 3 e 4 | Diagrama de atividades "Cadastrar atividade" e `id_conteudo NOT NULL` |
 | **RN14** — progresso da disciplina | UC08, passo 3 | Consulta de referência no script de criação |
+| **RN15** — semente e reserva do avatar | UC02, passos 4 e 6; fluxo alternativo 4A | Campo `membro.avatar` no dicionário de dados |
+| **RN16** — urgência do prazo | UC06; UC08, passo 6 | Campo `atividade.prazo` no dicionário de dados |
+| **RN17** — cadeia de obtenção dos feriados | UC08, passo 4 e fluxos alternativos 4A e 4B | Diagrama de casos de uso: BrasilAPI e Nager.Date como atores secundários |
 
 ---
 
@@ -70,6 +77,7 @@ Os dezoito requisitos funcionais possuem caso de uso e tela. O único requisito 
 | **RNF07** — mensagem em listagem vazia | UC01 fluxo 2A, UC03 fluxo 2A, UC08 fluxo 2A, UC09 fluxo 1A |
 | **RNF08** — recálculo em até 1 segundo | UC07, pós-condições |
 | **RNF09** — progresso legível sem depender da cor | UC08, passo 5: percentual exibido em número junto à barra |
+| **RNF10** — degradação com serviço externo fora do ar | UC02 fluxo 4A (avatar vira iniciais), UC08 fluxos 4A e 4B (fonte reserva e reaproveitamento) |
 
 ---
 
@@ -78,7 +86,8 @@ Os dezoito requisitos funcionais possuem caso de uso e tela. O único requisito 
 - Todo caso de uso tem origem em pelo menos um requisito funcional.
 - Todo requisito funcional aparece em pelo menos um caso de uso e em pelo menos uma tela.
 - Toda entidade do modelo de dados tem origem em um requisito: `grupo` (RF01), `membro` (RF02), `disciplina` (RF13), `conteudo` (RF14), `atividade` (RF03), `progresso_historico` (RF12), `conquista` e `membro_conquista` (RF17).
-- Nenhuma tela apresenta funcionalidade que não esteja documentada como requisito.
+- Todo serviço externo consumido pelo sistema está representado como ator secundário no diagrama de casos de uso e tem comportamento previsto para a sua indisponibilidade: BrasilAPI e Nager.Date (RN17), DiceBear (RN15).
+- Nenhuma tela apresenta funcionalidade que não esteja documentada como requisito. Esta verificação foi refeita em 17/09/2026, percorrendo o código tela a tela; as funcionalidades encontradas sem requisito correspondente originaram os requisitos RF19 a RF22 e as regras RN15 a RN17.
 - Os nomes usados nos requisitos, nos casos de uso, nas classes, nas tabelas e nas telas são os mesmos: grupo, membro, disciplina, conteúdo, atividade, progresso, conquista.
 
 ---
