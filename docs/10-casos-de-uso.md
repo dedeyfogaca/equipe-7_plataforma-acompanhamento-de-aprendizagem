@@ -5,7 +5,7 @@
 
 ---
 
-Estão especificados a seguir os seis casos de uso prioritários. O [diagrama de casos de uso](../diagramas/01-casos-de-uso.md) apresenta os onze casos identificados e sua correspondência com os requisitos.
+Estão especificados a seguir os oito casos de uso prioritários. O [diagrama de casos de uso](../diagramas/01-casos-de-uso.md) apresenta os doze casos identificados e sua correspondência com os requisitos.
 
 ---
 
@@ -39,6 +39,40 @@ Estão especificados a seguir os seis casos de uso prioritários. O [diagrama de
 **Pós-condições**
 
 - Existe um grupo ativo na sessão e o estudante tem acesso às telas privadas do sistema.
+
+---
+
+## UC02 · Gerenciar membros
+
+| | |
+|---|---|
+| **Ator principal** | Estudante Organizador |
+| **Atores secundários** | DiceBear (imagens de avatar) |
+| **Objetivo** | Manter a relação de quem participa do grupo de estudo |
+| **Pré-condições** | Existe um grupo ativo na sessão e o usuário atua como organizador |
+| **Requisitos** | RF02, RF19 |
+| **Regras** | RN03, RN07, RN15 |
+
+**Fluxo principal**
+
+1. O organizador acessa a tela de membros.
+2. O sistema exibe os membros já cadastrados, cada um com seu avatar, nome, função e perfil.
+3. O organizador solicita o cadastro de um novo membro.
+4. O sistema abre o formulário com uma semente de avatar já sorteada e apresenta a imagem correspondente (RF19, RN15).
+5. O organizador informa nome, função, e-mail e perfil.
+6. O organizador pode sortear outra semente quantas vezes quiser, até chegar a um avatar que lhe agrade (RF19).
+7. O organizador confirma o cadastro.
+8. O sistema valida os dados, grava o membro com a semente escolhida e atualiza a relação.
+
+**Fluxos alternativos**
+
+- **5A — Nome vazio:** o sistema exibe a mensagem de erro no campo e mantém o formulário aberto (RNF03).
+- **4A — DiceBear indisponível:** o sistema exibe as iniciais do nome no lugar da imagem e permite concluir o cadastro normalmente; a semente é gravada do mesmo jeito e a imagem passa a aparecer assim que o serviço voltar (RN15, RNF10).
+- **8A — Exclusão de membro responsável por atividades:** o sistema mantém as atividades e as deixa sem responsável, de modo que elas deixam de gerar experiência ao serem concluídas (RN10).
+
+**Pós-condições**
+
+- O membro passa a estar disponível para ser responsável por atividades (RN03).
 
 ---
 
@@ -154,22 +188,25 @@ Estão especificados a seguir os seis casos de uso prioritários. O [diagrama de
 | **Ator principal** | Estudante Participante |
 | **Objetivo** | Visualizar o quanto o grupo já avançou em cada disciplina e conteúdo, e o que está por vencer |
 | **Pré-condições** | Existe um grupo ativo na sessão |
-| **Requisitos** | RF06, RF07, RF10, RF11, RF12 |
-| **Regras** | RN05, RN08, RN14 |
+| **Requisitos** | RF06, RF07, RF10, RF11, RF12, RF21, RF22 |
+| **Regras** | RN05, RN08, RN14, RN16, RN17 |
+| **Atores secundários** | BrasilAPI e Nager.Date (feriados nacionais) |
 
 **Fluxo principal**
 
 1. O estudante acessa o painel.
 2. O sistema calcula o total de atividades por status e a quantidade de atividades atrasadas (RN05).
 3. O sistema calcula o progresso de cada conteúdo (RN08) e de cada disciplina (RN14).
-4. O sistema consulta a BrasilAPI para obter os feriados nacionais dos anos presentes nos prazos.
+4. O sistema consulta a BrasilAPI para obter os feriados nacionais dos anos presentes nos prazos e guarda a relação obtida para reutilização (RN17).
 5. O sistema exibe os totais, as barras de progresso por disciplina com o percentual em número, a lista de próximas entregas e o gráfico de evolução do histórico de progresso.
-6. O sistema destaca as atividades cujo prazo coincide com um feriado nacional (RF07).
+6. O sistema destaca as atividades cujo prazo coincide com um feriado nacional (RF07) ou com um fim de semana (RF22).
+7. O sistema exibe a relação dos próximos feriados nacionais a partir da data atual (RF21).
 
 **Fluxos alternativos**
 
 - **3A — Disciplina sem atividades:** a disciplina não entra no cálculo e é exibida com a indicação de que ainda não possui atividades (RN08, RN14).
-- **4A — BrasilAPI indisponível:** o sistema utiliza a última lista de feriados em cache; não havendo cache, omite a sinalização de feriados e informa que ela está indisponível no momento, mantendo o restante do painel funcional.
+- **4A — BrasilAPI indisponível ou lenta:** decorrido o tempo limite de espera, o sistema consulta a fonte reserva, a Nager.Date, e segue o fluxo principal (RN17).
+- **4B — As duas fontes indisponíveis:** o sistema reutiliza a última relação de feriados obtida com sucesso; não havendo nenhuma, omite a sinalização de feriados e a relação dos próximos, informa que estão indisponíveis no momento e mantém o restante do painel funcional (RN17, RNF10).
 - **2A — Grupo sem atividades:** o sistema exibe mensagem orientativa e o atalho para cadastrar a primeira atividade (RNF07).
 - **5A — Histórico com menos de dois registros:** o sistema exibe a barra de progresso atual e informa que a evolução aparecerá conforme o uso.
 
@@ -206,6 +243,32 @@ Estão especificados a seguir os seis casos de uso prioritários. O [diagrama de
 **Pós-condições**
 
 - Nenhuma alteração nos dados. O caso de uso é apenas de consulta.
+
+---
+
+## UC12 · Carregar dados de exemplo
+
+| | |
+|---|---|
+| **Ator principal** | Estudante Organizador |
+| **Objetivo** | Conhecer o sistema em funcionamento sem precisar cadastrar nada |
+| **Pré-condições** | Nenhuma. O caso de uso ocorre na tela de entrada, antes de existir grupo ativo |
+| **Requisitos** | RF20 |
+| **Regras** | RN01 |
+
+**Fluxo principal**
+
+1. O usuário aciona a carga de dados de exemplo na tela de entrada.
+2. O sistema cria um grupo de demonstração já preenchido, com membros, disciplinas, conteúdos e atividades em diferentes status e prazos.
+3. O sistema inicia a sessão nesse grupo e apresenta o painel.
+
+**Fluxos alternativos**
+
+- **2A — Já existe um grupo de demonstração:** o sistema cria um novo grupo, sem alterar nem sobrescrever os grupos existentes (RN01).
+
+**Pós-condições**
+
+- O grupo de demonstração passa a existir como qualquer outro grupo: pode ser usado, editado e excluído pelo usuário.
 
 ---
 
