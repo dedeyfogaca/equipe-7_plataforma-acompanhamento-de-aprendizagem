@@ -33,7 +33,7 @@ Guarda os integrantes de um grupo. O perfil determina o que o integrante pode fa
 | nome | VARCHAR | 80 | Sim | — | Nome do integrante |
 | funcao | VARCHAR | 60 | Não | — | Papel do integrante no grupo, ex.: "Revisão e slides" |
 | email | VARCHAR | 120 | Não | — | Endereço de e-mail para contato |
-| avatar | VARCHAR | 60 | Não | — | Semente usada para gerar a imagem do avatar |
+| avatar | VARCHAR | 60 | Não | — | Semente usada para gerar a imagem do avatar em serviço externo. A imagem não é armazenada; o que se guarda é a semente que a reproduz (RF19, RN15) |
 | perfil | VARCHAR | 15 | Sim | — | Perfil de permissão: `organizador` ou `participante` |
 
 ---

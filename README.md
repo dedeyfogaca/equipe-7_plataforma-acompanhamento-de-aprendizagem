@@ -27,7 +27,7 @@ O Vértice é uma plataforma web para grupos de estudo organizarem suas discipli
 | Integrante | GitHub |
 |---|---|
 | Andrey Fogaça | [@dedeyfogaca](https://github.com/dedeyfogaca) |
-| Matheus Saraiva Faustin | [@MatheusSaraiv-a](https://github.com/MatheusSaraiv-a) |
+| Matheus Saraiva Faustin | — |
 
 ---
 
@@ -57,6 +57,9 @@ O Vértice é uma plataforma web para grupos de estudo organizarem suas discipli
 | Estado | Context API | Suficiente para o volume de dados do projeto, sem dependência externa |
 | Persistência | Armazenamento do navegador, seguindo o modelo lógico relacional | Elimina a necessidade de servidor no prazo do bimestre; a migração para MySQL exige apenas trocar a camada de acesso |
 | Integração | BrasilAPI | Fonte pública e gratuita para os feriados nacionais |
+| Integração | Nager.Date | Fonte reserva de feriados, acionada quando a BrasilAPI falha ou demora |
+| Integração | DiceBear | Geração das imagens de avatar a partir de uma semente, sem hospedar imagem |
+| Tipografia | Google Fonts | Entrega das famílias Space Grotesk e Space Mono sem embutir arquivo de fonte no projeto |
 
 ---
 
@@ -85,9 +88,9 @@ O Vértice é uma plataforma web para grupos de estudo organizarem suas discipli
 | 03 | [Objetivos](docs/03-objetivos.md) | Objetivo geral e objetivos específicos |
 | 04 | [Público-Alvo e Perfis do Usuário](docs/04-publico-alvo-e-perfis-do-usuario.md) | Estudante organizador e estudante participante |
 | 05 | [Escopo](docs/05-escopo.md) | Incluído, não incluído e restrições |
-| 06 | [Requisitos Funcionais](docs/06-requisitos-funcionais.md) | RF01 a RF18 |
+| 06 | [Requisitos Funcionais](docs/06-requisitos-funcionais.md) | RF01 a RF22 |
 | 07 | [Requisitos Não Funcionais](docs/07-requisitos-nao-funcionais.md) | RNF01 a RNF09 |
-| 08 | [Regras de Negócio](docs/08-regras-de-negocio.md) | RN01 a RN14 |
+| 08 | [Regras de Negócio](docs/08-regras-de-negocio.md) | RN01 a RN17 |
 | 09 | [Histórico de Alterações](docs/09-historico-de-alteracoes.md) | Mudanças entre a Entrega 1 e a Entrega 2 |
 | 10 | [Especificação dos Casos de Uso](docs/10-casos-de-uso.md) | UC01, UC03, UC05, UC07, UC08 e UC09 detalhados |
 | 11 | [Matriz de Rastreabilidade](docs/11-matriz-de-rastreabilidade.md) | Requisito → caso de uso → entidades → tela |
@@ -97,7 +100,7 @@ O Vértice é uma plataforma web para grupos de estudo organizarem suas discipli
 | Diagrama | Conteúdo |
 |---|---|
 | [Identidade visual](diagramas/00-identidade-visual.md) | Paleta, tipografia e vocabulário de formas usados nos diagramas |
-| [Casos de uso](diagramas/01-casos-de-uso.md) | Atores, fronteira do sistema e os onze casos de uso |
+| [Casos de uso](diagramas/01-casos-de-uso.md) | Atores, fronteira do sistema e os doze casos de uso |
 | [Classes](diagramas/02-classes.md) | Oito classes com atributos, operações e cardinalidades |
 | [Fluxo — Concluir atividade](diagramas/03-atividade-concluir.md) | Recálculo de progresso, experiência, ofensiva e conquistas |
 | [Fluxo — Cadastrar atividade](diagramas/04-atividade-cadastrar.md) | Vínculo com disciplina e conteúdo, validações e padrões |

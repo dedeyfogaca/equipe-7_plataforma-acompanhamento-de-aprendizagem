@@ -19,11 +19,11 @@
 - Cadastro, edição e exclusão de atividades com título, descrição, conteúdo, prazo, peso, prioridade, status e responsável
 - Listagem de atividades com busca por texto, filtros por status, responsável, disciplina e prazo, e ordenação
 - Página de detalhe da atividade com alteração rápida de status
-- Sinalização de prazos que coincidem com feriados nacionais
+- Sinalização de prazos que coincidem com feriados nacionais ou com fim de semana
 
 **Acompanhamento e desempenho**
 
-- Painel com totais por status, atividades atrasadas e próximas entregas
+- Painel com totais por status, atividades atrasadas, próximas entregas e próximos feriados nacionais
 - Cálculo e exibição do progresso por conteúdo e por disciplina
 - Registro e visualização do histórico de progresso ao longo do tempo
 - Pontos de experiência atribuídos por atividade concluída, proporcionais ao peso
@@ -34,6 +34,8 @@
 **Interface**
 
 - Tema claro e escuro
+- Avatar por membro, sorteado e trocável
+- Carga de dados de exemplo para conhecer o sistema sem cadastrar nada
 
 ---
 
@@ -58,7 +60,7 @@
 | **Tecnologia** | Interface em React 18 com Vite |
 | **Persistência** | Nesta versão os dados são armazenados no navegador do usuário, seguindo a estrutura definida no modelo lógico do banco de dados. Isso restringe o acesso ao dispositivo utilizado e impede o compartilhamento automático entre integrantes |
 | **Acesso** | O acesso ocorre pela seleção do grupo, sem autenticação por senha; a identificação do perfil depende da escolha do próprio usuário |
-| **Integração** | A sinalização de feriados depende de serviço externo (BrasilAPI), sujeito a indisponibilidade |
+| **Integração** | O sistema depende de três serviços externos gratuitos, todos sujeitos a indisponibilidade: **BrasilAPI** e **Nager.Date** para os feriados nacionais, e **DiceBear** para as imagens de avatar. A tipografia é servida pelo **Google Fonts**. Nenhum deles tem contrato de nível de serviço, e por isso cada um tem alternativa local prevista (RNF10, RN15, RN17) |
 
 ---
 
