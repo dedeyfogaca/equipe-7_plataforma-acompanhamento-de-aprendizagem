@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="2400" height="1260">
+<rect width="800" height="420" fill="#FFFFFF"/>
+
+    <circle cx="95" cy="54.1" r="9.1" stroke="#0891B2" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <line x1="95" y1="63.1" x2="95" y2="86.9" stroke="#0891B2" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <line x1="81.0" y1="71.5" x2="109.0" y2="71.5" stroke="#0891B2" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <line x1="95" y1="86.9" x2="83.8" y2="105.0" stroke="#0891B2" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <line x1="95" y1="86.9" x2="106.2" y2="105.0" stroke="#0891B2" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+<text x="166" y="81" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="17" fill="#0B1220" font-weight="500" text-anchor="start" letter-spacing="0">Ator do sistema</text>
+<circle cx="95" cy="170" r="30" fill="#EEF1F6" stroke="#64748B" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="166" y="176" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="17" fill="#0B1220" font-weight="500" text-anchor="start" letter-spacing="0">Sistema externo</text>
+<rect x="43" y="250" width="104" height="30" rx="3" fill="#F5F7FC" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="166" y="271" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="17" fill="#0B1220" font-weight="500" text-anchor="start" letter-spacing="0">Ação do sistema</text>
+<rect x="43" y="345" width="104" height="30" rx="3" fill="#E3F7EC" stroke="#16A34A" stroke-width="2"/>
+<text x="166" y="366" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="17" fill="#0B1220" font-weight="500" text-anchor="start" letter-spacing="0">Ganho para o estudante</text>
+<ellipse cx="475" cy="75" rx="52" ry="20" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.8"/>
+<text x="546" y="81" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="17" fill="#0B1220" font-weight="500" text-anchor="start" letter-spacing="0">Caso de uso</text>
+<rect x="423" y="155" width="104" height="30" rx="15" fill="#EEF7DD" stroke="#4D7C0F" stroke-width="2.5"/>
+<text x="546" y="176" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="17" fill="#0B1220" font-weight="500" text-anchor="start" letter-spacing="0">Início ou fim</text>
+<polygon points="475,241 517,265 475,289 433,265" fill="#FEF3D7" stroke="#D97706" stroke-width="2"/>
+<text x="546" y="271" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="17" fill="#0B1220" font-weight="500" text-anchor="start" letter-spacing="0">Decisão</text>
+<rect x="423" y="345" width="104" height="30" rx="3" fill="#FDE7E7" stroke="#DC2626" stroke-width="2"/>
+<text x="546" y="366" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="17" fill="#0B1220" font-weight="500" text-anchor="start" letter-spacing="0">Erro ou estorno</text>
+</svg>
