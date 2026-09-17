@@ -31,60 +31,41 @@ As cores são as da paleta `coresClaras` do arquivo de tema, escolhida por atrav
 | Rótulos de nós, entidades e classes | **Space Grotesk** — a mesma do corpo de texto da aplicação |
 | Rótulos de transição e de relacionamento | **Space Mono** — a mesma dos rótulos de dados da interface |
 
+Ambas são servidas pelo Google Fonts, que por isso conta como dependência externa da aplicação (Doc. 05 — Restrições). Não deixam de ser lidas quando o serviço está fora do ar: o navegador recai na fonte sem serifa do sistema, e só a tipografia muda.
+
 ---
 
 ## Vocabulário de formas
 
-```mermaid
-%%{init: {"theme": "base", "fontFamily": "Space Grotesk", "themeVariables": {"fontFamily": "Space Grotesk, Segoe UI, sans-serif", "fontSize": "15px", "primaryColor": "#F5F7FC", "primaryTextColor": "#0B1220", "primaryBorderColor": "#CDD4E1", "lineColor": "#5B6678", "secondaryColor": "#EEF7DD", "tertiaryColor": "#FAFBFE", "clusterBkg": "#FAFBFE", "clusterBorder": "#CDD4E1", "edgeLabelBackground": "#FFFFFF", "titleColor": "#0E7490", "nodeBorder": "#CDD4E1", "mainBkg": "#F5F7FC", "textColor": "#0B1220"}, "flowchart": {"curve": "basis", "padding": 18, "nodeSpacing": 48, "rankSpacing": 58}}}%%
-flowchart LR
-    L1(("Ator"))
-    L2(["Caso de uso"])
-    L3(("Sistema<br/>externo"))
-    L4([Início ou fim])
-    L5[Ação do sistema]
-    L6{Decisão}
-    L7[Ganho para o estudante]
-    L8[Erro ou estorno]
+![Legenda das formas usadas nos diagramas](png/legenda.png)
 
-    L1 ~~~ L2 ~~~ L3
-    L4 ~~~ L5 ~~~ L6
-    L7 ~~~ L8
-
-    classDef ator fill:#E0F7FC,stroke:#0891B2,stroke-width:2.5px,color:#0B1220
-    classDef externo fill:#EEF1F6,stroke:#64748B,stroke-width:2px,color:#0B1220,stroke-dasharray:5 4
-    classDef uc fill:#FFFFFF,stroke:#0891B2,stroke-width:1.6px,color:#0B1220
-    classDef terminal fill:#EEF7DD,stroke:#4D7C0F,stroke-width:2.5px,color:#3F6212
-    classDef acao fill:#F5F7FC,stroke:#CDD4E1,stroke-width:1.6px,color:#0B1220
-    classDef decisao fill:#FEF3D7,stroke:#D97706,stroke-width:2px,color:#5C3A05
-    classDef ganho fill:#E3F7EC,stroke:#16A34A,stroke-width:2px,color:#0B3D21
-    classDef erro fill:#FDE7E7,stroke:#DC2626,stroke-width:2px,color:#7F1616
-    class L1 ator
-    class L2 uc
-    class L3 externo
-    class L4 terminal
-    class L5 acao
-    class L6 decisao
-    class L7 ganho
-    class L8 erro
-```
+> Desenho-fonte: [`svg/legenda.svg`](svg/legenda.svg) · Imagem para o documento: [`png/legenda.png`](png/legenda.png)
 
 | Forma | Significado |
 |---|---|
-| Círculo ciano preenchido | Ator do sistema — quem inicia a interação |
-| Círculo cinza tracejado | Sistema externo — participa, mas não inicia nada |
-| Pílula com borda ciano | Caso de uso |
+| Boneco palito ciano | Ator do sistema — a pessoa que inicia a interação |
+| Círculo cinza tracejado | Sistema externo — participa, mas não inicia nada e não é pessoa |
+| Elipse com borda ciano | Caso de uso |
 | Pílula verde limão | Início e fim de um fluxo |
 | Retângulo neutro | Ação executada pelo usuário ou pelo sistema |
 | Losango âmbar | Ponto de decisão, sempre com as saídas rotuladas |
 | Retângulo verde | Passo que devolve ganho ao estudante |
 | Retângulo rosa | Erro de validação ou estorno |
 
+A distinção entre as duas primeiras formas é proposital: **o boneco palito representa apenas o ator que é pessoa**. Serviço de software consumido pelo sistema aparece como círculo tracejado, com o estereótipo «sistema externo» escrito embaixo.
+
 ---
 
 ## Como os diagramas são mantidos
 
-Os arquivos `.md` deste repositório trazem o código-fonte dos diagramas em Mermaid, já com o tema aplicado. O GitHub os renderiza automaticamente, e qualquer alteração é feita no texto, sem depender de ferramenta de desenho. As imagens em `diagramas/png/` são a exportação desses mesmos arquivos, para inserir no documento entregue.
+Todos os diagramas são mantidos como texto, não como arquivos de ferramenta de desenho. Alterar um diagrama é editar código, e o histórico do Git mostra exatamente o que mudou.
+
+| Diagrama | Fonte | Por quê |
+|---|---|---|
+| Classes, atividades, modelo conceitual, modelo lógico | Mermaid, dentro do próprio `.md` | O GitHub renderiza automaticamente |
+| Casos de uso e esta legenda | SVG, em `diagramas/svg/` | O Mermaid não tem a forma de ator da UML, o boneco palito |
+
+As imagens em `diagramas/png/` são a exportação dessas fontes, para inserir no documento entregue.
 
 ---
 
