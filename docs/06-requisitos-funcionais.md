@@ -8,7 +8,7 @@
 | ID | Descrição | Prioridade | Dependência |
 |---|---|---|---|
 | **RF01** | O sistema deve permitir criar, selecionar e excluir grupos de estudo. | Alta | — |
-| **RF02** | O sistema deve permitir cadastrar, editar e excluir os membros do grupo, informando nome, função, e-mail e perfil. | Alta | RF01 |
+| **RF02** | O sistema deve permitir cadastrar, editar e excluir os membros do grupo, informando nome, função, e-mail, perfil e avatar. | Alta | RF01 |
 | **RF03** | O sistema deve permitir cadastrar, editar e excluir atividades, informando título, descrição, conteúdo, prazo, peso, prioridade, status e responsável. | Alta | RF01, RF02, RF14 |
 | **RF04** | O sistema deve exibir a lista de atividades do grupo com busca por texto, filtros por status, responsável, disciplina e prazo, e ordenação. | Alta | RF03 |
 | **RF05** | O sistema deve exibir o detalhe de uma atividade e permitir a alteração do seu status. | Alta | RF03 |
@@ -25,6 +25,10 @@
 | **RF16** | O sistema deve calcular e exibir a ofensiva do estudante, correspondente ao número de dias consecutivos com pelo menos uma atividade concluída. | Média | RF15 |
 | **RF17** | O sistema deve conceder conquistas ao estudante quando ele atingir os marcos previstos e exibi-las no seu perfil. | Média | RF15 |
 | **RF18** | O sistema deve exibir um painel de desempenho com a experiência acumulada, a ofensiva atual e as conquistas de cada integrante do grupo. | Média | RF15, RF16, RF17 |
+| **RF19** | O sistema deve gerar o avatar de cada membro a partir de uma semente registrada no cadastro e permitir sortear uma semente nova a qualquer momento. | Baixa | RF02 |
+| **RF20** | O sistema deve permitir carregar um conjunto de dados de exemplo, criando um grupo de demonstração já preenchido e iniciando a sessão nele. | Baixa | RF01 |
+| **RF21** | O sistema deve exibir no painel a relação dos próximos feriados nacionais a partir da data atual. | Baixa | RF06, RF07 |
+| **RF22** | O sistema deve sinalizar quando o prazo de uma atividade coincidir com sábado ou domingo. | Baixa | RF03 |
 
 ---
 

@@ -21,6 +21,9 @@
 | **RN12** | Uma conquista é concedida uma única vez por estudante, no instante em que o marco correspondente é atingido, e não é revogada por alterações posteriores. | Média | RF17 |
 | **RN13** | Toda atividade deve estar vinculada a exatamente um conteúdo, e todo conteúdo a exatamente uma disciplina. Não é permitido excluir um conteúdo que possua atividades vinculadas sem excluir também essas atividades. | Alta | RF03, RF14 |
 | **RN14** | O progresso de uma disciplina corresponde à razão entre o peso das atividades concluídas de todos os seus conteúdos e o peso total dessas atividades; disciplinas sem atividades cadastradas não entram no cálculo. Essa razão é a forma de agregação prevista no RF11: conteúdos com mais peso pesam mais no resultado da disciplina. | Alta | RF11 |
+| **RN15** | A semente do avatar é sorteada pelo sistema, e não derivada do nome, para que o membro possa trocar de avatar sem trocar de nome. Quando a imagem não puder ser carregada, o sistema exibe as iniciais do nome do membro no lugar dela. | Baixa | RF19 |
+| **RN16** | A urgência do prazo de uma atividade não concluída é classificada pela quantidade de dias até a data atual: acima de sete dias é normal, de três a sete dias é próxima, e dois dias ou menos é crítica. Prazo anterior à data atual caracteriza atraso (RN05). | Média | RF04, RF22 |
+| **RN17** | Os feriados nacionais são obtidos de serviço externo. Em caso de falha ou demora na fonte principal, o sistema consulta a fonte reserva; falhando as duas, reutiliza a última relação obtida com sucesso; não havendo nenhuma, omite a sinalização e informa que ela está indisponível. | Média | RF07, RF21 |
 
 ---
 
