@@ -86,19 +86,27 @@ O momento decisivo é a conclusão. Ali, uma ação isolada do estudante vira tr
 
 ---
 
-## O que falta construir para o MVP ficar pronto
+## Situação da construção
 
-Das 24 tarefas do [backlog](12-backlog.md), 10 estão concluídas. As 6 do caminho crítico são as que separam o estado atual do MVP:
+Das 24 tarefas do [backlog](12-backlog.md), 23 estão concluídas. As 6 do caminho crítico — as que separavam um gerenciador de tarefas de um sistema que mede aprendizagem — foram executadas:
 
-| Tarefa | O que falta |
+| Tarefa | O que entrou |
 |---|---|
-| T06, T07 | Disciplina e conteúdo como cadastros próprios |
-| T13 | Vincular a atividade ao conteúdo no formulário |
-| T12 | Campo peso, de 1 a 5 |
-| T18 | Cálculo do progresso a partir do peso |
-| T21 | Crédito e estorno de experiência |
+| T06, T07 | Disciplina e conteúdo como cadastros próprios, com tela e formulário |
+| T13 | Vínculo obrigatório da atividade a um conteúdo (RN13) |
+| T12 | Campo peso, escala de 1 a 5, padrão 1 (RN09) |
+| T18, T19 | Progresso por conteúdo e por disciplina, por razão de pesos somados (RN08, RN14) |
+| T21 | Crédito e estorno de experiência, `peso × 10` (RN10) |
 
-Sem essas seis, o sistema continua sendo um gerenciador de tarefas em grupo. Com elas, passa a medir aprendizagem.
+Das dezessete regras de negócio, quinze estão implementadas. As duas de fora são a **RN11** (ofensiva) e a **RN12** (conquistas), que pertencem a requisitos desejáveis e ficaram para a versão seguinte por decisão da equipe. Nenhuma das duas ficou bloqueada: a data de conclusão da atividade passou a ser gravada, e é dela que a ofensiva depende.
+
+Sobra a **T24**, parcial: a revisão visual está aplicada à tipografia, ao cartão de atividade, às situações como filtro, à casca de três colunas, ao calendário e às telas de disciplinas e membros. As telas de detalhe e de acesso continuam no desenho anterior.
+
+### A migração dos dados
+
+A troca de formato não podia apagar o que quem já usava o sistema tinha feito. A atividade guardava a disciplina como texto livre; o modelo alvo exige a cadeia atividade → conteúdo → disciplina → grupo.
+
+A conversão cria uma disciplina para cada nome distinto que aparecia nas atividades, um conteúdo "Geral" dentro de cada uma para recebê-las, atribui peso 1 às que não tinham (RN09) e define o perfil dos membros (RN07). Roda uma vez só, controlada por um marcador de versão gravado junto com os dados.
 
 ---
 

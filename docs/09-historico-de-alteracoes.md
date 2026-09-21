@@ -127,6 +127,23 @@ A conferência das telas apontou problemas de interface que não alteram requisi
 
 ---
 
+## Construção do MVP — 21/09/2026
+
+Rodada de implementação que levou o sistema do estado da Entrega 3 ao MVP construído. Nenhum requisito, regra ou caso de uso foi alterado: o que mudou foi o código passar a fazer o que os documentos já descreviam.
+
+| Item | Alteração | Motivo |
+|---|---|---|
+| Doc. 12 — Backlog | 13 tarefas passaram de *A fazer* e *Em andamento* para *Concluída*, restando a T24 em andamento | Execução do caminho crítico T06 → T07 → T13 → T12 → T18 → T21 e das tarefas paralelas |
+| Doc. 12 — Situação geral | Tabela corrigida de 9/3/12 para a contagem real das linhas, e depois atualizada para 23/1/— | A tabela resumo divergia das linhas da tabela de tarefas desde a Entrega 3 |
+| Doc. 14 — MVP | A seção "O que falta construir" passou a "Situação da construção", com o que entrou em cada tarefa do caminho crítico e o registro da migração de dados | O documento descrevia um estado que deixou de valer |
+| Pasta `src/` | Deixou de estar vazia: recebeu o código-fonte da aplicação | A pasta existia como reserva desde a Entrega 2 |
+
+Quinze das dezessete regras de negócio ficaram implementadas. As duas de fora, RN11 (ofensiva) e RN12 (conquistas), pertencem a requisitos classificados como desejáveis e não entraram no MVP — sem bloquear caminho, já que a data de conclusão da atividade passou a ser gravada.
+
+Os dados gravados no navegador por quem já usava o sistema foram convertidos ao formato novo, e não descartados: a disciplina que era texto livre dentro da atividade virou cadastro próprio, com um conteúdo "Geral" recebendo as atividades existentes.
+
+---
+
 ## Pendência registrada
 
 | Item | Situação |

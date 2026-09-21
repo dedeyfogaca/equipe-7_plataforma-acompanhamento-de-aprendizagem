@@ -1,7 +1,7 @@
 # 12 · Backlog do Projeto
 
 > **Vértice** — Plataforma de Acompanhamento de Aprendizagem
-> Documento de Visão e Requisitos · Imersão Profissional: Projeto de Software · ADSIS4S · Entrega 3
+> Documento de Visão e Requisitos · Imersão Profissional: Projeto de Software · ADSIS4S · Entrega 3, atualizado em 21/09/2026
 
 ---
 
@@ -15,12 +15,14 @@ Estados usados: **A fazer**, **Em andamento** e **Concluída**.
 
 | Situação | Tarefas |
 |---|---|
-| Concluída | 10 |
-| Em andamento | 3 |
-| A fazer | 11 |
+| Concluída | 23 |
+| Em andamento | 1 |
+| A fazer | — |
 | **Total** | **24** |
 
-As dez tarefas concluídas correspondem ao que a aplicação já executa hoje: grupos e carga de exemplo, membros com avatar, atividades sem peso, listagem com filtros, detalhe da atividade, painel de totais, tema e encerramento de sessão.
+**O MVP está construído.** As quinze funcionalidades classificadas como indispensáveis no [Produto Mínimo Viável](14-mvp.md) estão implementadas, e o fluxo completo — entrar no grupo, cadastrar disciplina e conteúdo, cadastrar atividade com peso, concluir, ver o progresso subir e a experiência ser creditada — roda do início ao fim.
+
+Sobra a **T24**, parcial. Já estão aplicados ao código a tipografia em família única, o cartão de atividade com o anel de peso, as situações como filtro, a casca de três colunas, o calendário e as telas de disciplinas e membros. Faltam as telas de **detalhe** e **acesso**, que continuam no desenho anterior.
 
 ---
 
@@ -33,9 +35,9 @@ As dez tarefas concluídas correspondem ao que a aplicação já executa hoje: g
 | T03 | Cadastro, edição e exclusão de membros | RF02 | Alta | Andrey | Concluída |
 | T04 | Avatar do membro com sorteio de semente | RF19 | Baixa | Andrey | Concluída |
 | T05 | Encerramento da sessão do grupo | RF09 | Média | Andrey | Concluída |
-| T06 | Entidade disciplina: modelo, tela e formulário | RF13 | Alta | Matheus | Em andamento |
-| T07 | Entidade conteúdo vinculada à disciplina | RF14 | Alta | Matheus | Em andamento |
-| T08 | Estado vazio orientando disciplina → conteúdo → atividade | RNF07 | Média | Andrey | A fazer |
+| T06 | Entidade disciplina: modelo, tela e formulário | RF13 | Alta | Matheus | Concluída |
+| T07 | Entidade conteúdo vinculada à disciplina | RF14 | Alta | Matheus | Concluída |
+| T08 | Estado vazio orientando disciplina → conteúdo → atividade | RNF07 | Média | Andrey | Concluída |
 
 ---
 
@@ -46,11 +48,11 @@ As dez tarefas concluídas correspondem ao que a aplicação já executa hoje: g
 | T09 | Cadastro e edição de atividade | RF03 | Alta | Andrey | Concluída |
 | T10 | Listagem com busca, filtros e ordenação | RF04 | Alta | Andrey | Concluída |
 | T11 | Detalhe da atividade com alteração de status | RF05 | Alta | Andrey | Concluída |
-| T12 | Campo peso no formulário, com escala de 1 a 5 | RF03, RN09 | Alta | Matheus | Em andamento |
-| T13 | Vínculo obrigatório atividade → conteúdo no formulário | RF03, RN13 | Alta | Matheus | A fazer |
-| T14 | Tornar o responsável opcional na validação | RN06, RN10 | Média | Andrey | A fazer |
-| T15 | Filtros como painel lateral fixo | RF04, RNF01 | Média | Andrey | A fazer |
-| T16 | Cartões de situação clicáveis, funcionando como filtro | RF06 | Média | Andrey | A fazer |
+| T12 | Campo peso no formulário, com escala de 1 a 5 | RF03, RN09 | Alta | Matheus | Concluída |
+| T13 | Vínculo obrigatório atividade → conteúdo no formulário | RF03, RN13 | Alta | Matheus | Concluída |
+| T14 | Tornar o responsável opcional na validação | RN06, RN10 | Média | Andrey | Concluída |
+| T15 | Filtros como painel lateral fixo | RF04, RNF01 | Média | Andrey | Concluída |
+| T16 | Cartões de situação clicáveis, funcionando como filtro | RF06 | Média | Andrey | Concluída |
 
 ---
 
@@ -59,11 +61,11 @@ As dez tarefas concluídas correspondem ao que a aplicação já executa hoje: g
 | ID | Tarefa | Requisito | Prioridade | Responsável | Status |
 |---|---|---|---|---|---|
 | T17 | Painel com totais por status e atividades atrasadas | RF06 | Alta | Andrey | Concluída |
-| T18 | Cálculo do progresso por conteúdo a partir do peso | RF10, RN08 | Alta | Matheus | A fazer |
-| T19 | Agregação do progresso por disciplina | RF11, RN14 | Alta | Matheus | A fazer |
-| T20 | Barras de progresso no painel e na tela de disciplinas | RF10, RF11 | Alta | Andrey | A fazer |
-| T21 | Crédito e estorno de experiência ao concluir e reverter | RF15, RN10 | Alta | Matheus | A fazer |
-| T22 | Retorno visual da conclusão: progresso antes e depois | RF15 | Média | Andrey | A fazer |
+| T18 | Cálculo do progresso por conteúdo a partir do peso | RF10, RN08 | Alta | Matheus | Concluída |
+| T19 | Agregação do progresso por disciplina | RF11, RN14 | Alta | Matheus | Concluída |
+| T20 | Barras de progresso no painel e na tela de disciplinas | RF10, RF11 | Alta | Andrey | Concluída |
+| T21 | Crédito e estorno de experiência ao concluir e reverter | RF15, RN10 | Alta | Matheus | Concluída |
+| T22 | Retorno visual da conclusão: progresso antes e depois | RF15 | Média | Andrey | Concluída |
 
 ---
 
@@ -72,7 +74,7 @@ As dez tarefas concluídas correspondem ao que a aplicação já executa hoje: g
 | ID | Tarefa | Requisito | Prioridade | Responsável | Status |
 |---|---|---|---|---|---|
 | T23 | Tema claro e escuro | RF08 | Baixa | Andrey | Concluída |
-| T24 | Aplicar a revisão visual: tipografia, cor da gamificação e layout de três colunas | RNF06 | Média | Andrey | A fazer |
+| T24 | Aplicar a revisão visual: tipografia, cor da gamificação e layout de três colunas | RNF06 | Média | Andrey | Em andamento |
 
 ---
 
@@ -92,7 +94,9 @@ T06 disciplina  →  T07 conteúdo  →  T13 vínculo da atividade
                                     T22 retorno da conclusão
 ```
 
-O caminho crítico é **T06 → T07 → T13 → T12 → T18 → T21**. Qualquer atraso nessas seis tarefas empurra a data do MVP; as demais podem ser feitas em paralelo.
+O caminho crítico é **T06 → T07 → T13 → T12 → T18 → T21**. Qualquer atraso nessas seis tarefas empurraria a data do MVP; as demais podiam ser feitas em paralelo.
+
+As seis foram executadas nessa ordem, e foi ela que ditou o ritmo: a disciplina precisou existir como entidade antes de o conteúdo poder pertencer a alguma, o conteúdo antes de a atividade poder se vincular, e o peso antes de haver o que somar. A migração dos dados já gravados entrou junto com a T13, porque é a mesma mudança de formato vista do outro lado — quem já usava o sistema tinha atividades com a disciplina escrita como texto, e elas precisavam encontrar um conteúdo para morar.
 
 ---
 
