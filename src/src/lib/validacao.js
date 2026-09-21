@@ -1,0 +1,163 @@
+// Validações dos formulários escritas em JavaScript puro.
+// Cada função recebe os dados e devolve um objeto de erros { campo: mensagem }.
+// Um objeto vazio significa "tudo certo".
+
+import { corDisciplinaValida, PERFIL, PESO, STATUS } from './constants.js';
+import { dataValida } from './datas.js';
+
+export function validarAtividade(dados, { membros = [], conteudos = [] } = {}) {
+  const erros = {};
+
+  const titulo = (dados.titulo || '').trim();
+  if (!titulo) {
+    erros.titulo = 'Informe um título para a atividade.';
+  } else if (titulo.length < 3) {
+    erros.titulo = 'O título precisa ter pelo menos 3 caracteres.';
+  }
+
+  if (!dados.prazo) {
+    erros.prazo = 'Defina um prazo de entrega.';
+  } else if (!dataValida(dados.prazo)) {
+    erros.prazo = 'O prazo informado não é uma data válida.';
+  }
+
+  // RN06 — responsável NÃO é obrigatório. Atividade sem responsável é um
+  // caso previsto (UC05-5A), e o RN10 diz que ela simplesmente não gera
+  // experiência.
+  //
+  // RN03 — mas, havendo um, ele tem de ser membro do grupo da atividade.
+  // Esta checagem era o `else` da obrigatoriedade que o T14 removeu: apagar
+  // o bloco inteiro teria levado o RN03 junto.
+  if (
+    dados.responsavelId &&
+    membros.length > 0 &&
+    !membros.some((m) => m.id === dados.responsavelId)
+  ) {
+    erros.responsavelId = 'O responsável escolhido não pertence ao grupo.';
+  }
+
+  // RN13 — não existe atividade solta: ela pertence a exatamente um conteúdo.
+  if (!dados.conteudoId) {
+    erros.conteudoId = 'Escolha o conteúdo a que a atividade pertence.';
+  } else if (conteudos.length > 0 && !conteudos.some((c) => c.id === dados.conteudoId)) {
+    erros.conteudoId = 'O conteúdo escolhido não pertence a este grupo.';
+  }
+
+  // RN09 — peso é inteiro de 1 a 5. Campo opcional no formulário: em branco
+  // vira 1, mas valor fora da faixa é erro, não arredondamento silencioso.
+  if (dados.peso !== undefined && dados.peso !== null && dados.peso !== '') {
+    const peso = Number(dados.peso);
+    if (!Number.isInteger(peso) || peso < PESO.MINIMO || peso > PESO.MAXIMO) {
+      erros.peso = `O peso vai de ${PESO.MINIMO} a ${PESO.MAXIMO}.`;
+    }
+  }
+
+  const statusValidos = [STATUS.A_FAZER, STATUS.FAZENDO, STATUS.CONCLUIDO];
+  if (dados.status && !statusValidos.includes(dados.status)) {
+    erros.status = 'Status inválido.';
+  }
+
+  return erros;
+}
+
+// `membros` são os do grupo; `ignorarId` é o próprio membro em edição.
+export function validarMembro(dados, { membros = [], ignorarId = null } = {}) {
+  const erros = {};
+
+  if (!dados.nome || !dados.nome.trim()) {
+    erros.nome = 'O nome do membro é obrigatório.';
+  }
+
+  const email = (dados.email || '').trim();
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    erros.email = 'E-mail inválido.';
+  }
+
+  // RN07 — o grupo não pode ficar sem organizador. Sem ele ninguém mais
+  // gerencia membros, disciplinas nem conteúdos, e o grupo trava.
+  if (ignorarId && dados.perfil && dados.perfil !== PERFIL.ORGANIZADOR) {
+    if (ultimoOrganizador(ignorarId, membros)) {
+      erros.perfil = 'O grupo precisa de pelo menos um organizador.';
+    }
+  }
+
+  return erros;
+}
+
+/** RN07 — mexer neste membro deixaria o grupo sem organizador? */
+export function ultimoOrganizador(membroId, membros = []) {
+  const organizadores = membros.filter((m) => m.perfil === PERFIL.ORGANIZADOR);
+  return organizadores.length === 1 && organizadores[0].id === membroId;
+}
+
+// RN01 + modelo lógico: uma disciplina pertence a um grupo e o par
+// (grupo, nome) é único. A comparação ignora maiúsculas/minúsculas porque a
+// unique key do MySQL também ignora — "TCC" e "tcc" seriam a mesma linha lá.
+// `disciplinas` já deve vir filtrada pelo grupo; `ignorarId` é a própria
+// disciplina quando se está editando.
+export function validarDisciplina(dados, { disciplinas = [], ignorarId = null } = {}) {
+  const erros = {};
+
+  const nome = (dados.nome || '').trim();
+  if (!nome) {
+    erros.nome = 'Informe o nome da disciplina.';
+  } else if (nome.length < 2) {
+    erros.nome = 'O nome precisa ter pelo menos 2 caracteres.';
+  } else {
+    const repetida = disciplinas.some(
+      (d) => d.id !== ignorarId && (d.nome || '').trim().toLowerCase() === nome.toLowerCase()
+    );
+    if (repetida) {
+      erros.nome = 'Este grupo já tem uma disciplina com esse nome.';
+    }
+  }
+
+  if (dados.cor && !corDisciplinaValida(dados.cor)) {
+    erros.cor = 'Escolha uma das cores disponíveis.';
+  }
+
+  return erros;
+}
+
+// RN13 — o conteúdo pertence a exatamente uma disciplina, e o par
+// (disciplina, nome) é único, como a unique key do modelo lógico. A
+// comparação de nome ignora maiúsculas/minúsculas pelo mesmo motivo da
+// disciplina: é assim que o MySQL vai comparar.
+// `conteudos` já deve vir filtrada pela disciplina; `ignorarId` é o próprio
+// conteúdo quando se está editando.
+export function validarConteudo(dados, { conteudos = [], ignorarId = null } = {}) {
+  const erros = {};
+
+  const nome = (dados.nome || '').trim();
+  if (!nome) {
+    erros.nome = 'Informe o nome do conteúdo.';
+  } else if (nome.length < 2) {
+    erros.nome = 'O nome precisa ter pelo menos 2 caracteres.';
+  } else {
+    const repetido = conteudos.some(
+      (c) => c.id !== ignorarId && (c.nome || '').trim().toLowerCase() === nome.toLowerCase()
+    );
+    if (repetido) {
+      erros.nome = 'Esta disciplina já tem um conteúdo com esse nome.';
+    }
+  }
+
+  if (!dados.disciplinaId) {
+    erros.disciplinaId = 'O conteúdo precisa pertencer a uma disciplina.';
+  }
+
+  return erros;
+}
+
+export function validarGrupo(dados) {
+  const erros = {};
+  if (!dados.nome || !dados.nome.trim()) {
+    erros.nome = 'Dê um nome ao grupo.';
+  }
+  return erros;
+}
+
+// Atalho para checar se um objeto de erros está vazio.
+export function semErros(erros) {
+  return Object.keys(erros).length === 0;
+}
