@@ -1,0 +1,85 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Vértice — Concluir atividade</title><link rel="stylesheet" href="base.css"></head>
+<body><script src="ui.js"></script><script>
+montar('atividades', `
+  <div class="cabeca">
+    <div>
+      <div style="font-size:12.5px;color:var(--textoSuave);margin-bottom:6px">
+        <a href="atividades.html" style="color:var(--primariaForte);font-weight:600">‹ Atividades</a></div>
+      <h1>Atividade concluída</h1>
+    </div>
+    <button class="btn sec">Desfazer conclusão</button>
+  </div>
+
+  <div class="festa">
+    <div class="ico"></div>
+    <div class="tx">
+      <b>Boa! Progresso de Banco de Dados subiu para 78%</b>
+      <span>A ofensiva chegou a 6 dias seguidos.</span>
+    </div>
+    <div class="xp"><b>+30</b><span>Experiência</span></div>
+  </div>
+
+  <div class="det">
+    <div class="trilha">Banco de Dados <span>›</span> <b>Normalização</b></div>
+    <h2>Modelagem relacional — lista de exercícios</h2>
+    <div class="desc">Resolver os exercícios 1 a 14 do capítulo 4, aplicando as formas normais
+      até a 3FN. Entregar o arquivo com os diagramas e a justificativa de cada decomposição.</div>
+
+    <div class="ficha">
+      <div><div class="l">Situação</div>
+        <div class="v" style="color:var(--concluido)">Concluída</div></div>
+      <div><div class="l">Peso</div>
+        <div class="v">${peso(3, 'Vale 3 dos 47 pontos de <span>Banco de Dados</span>. Concluir move a barra em 6%.')} 3 de 5</div></div>
+      <div><div class="l">Prioridade</div><div class="v">Alta</div></div>
+      <div><div class="l">Responsável</div>
+        <div class="v"><span class="av" style="background:#ffd5dc;color:#8b3a4a">MS</span> Matheus</div></div>
+    </div>
+
+    <div class="secao">O que mudou ao concluir</div>
+    <div style="background:var(--superficieAlt);border:1px solid var(--borda);
+         border-radius:11px;padding:16px 18px">
+      <div class="antesdepois">
+        <div class="t" style="opacity:.5">
+          ${barra('Banco de Dados — antes', 72, '')}
+        </div>
+        <div class="seta">→</div>
+        <div class="t">${barra('Banco de Dados — agora', 78, '')}</div>
+      </div>
+      <div style="font-size:12px;color:var(--textoSuave);margin-top:13px;
+           padding-top:13px;border-top:1px solid var(--borda)">
+        O peso 3 entrou nos 37 pontos concluídos de 47. O conteúdo
+        <b style="color:var(--texto)">Normalização</b> passou de 60% para 80%.
+      </div>
+    </div>
+  </div>
+`, `
+  <div class="bloco"><div class="cap">Meu desempenho</div>
+    <div class="metricas">
+      <div class="met"><div class="n">178</div><div class="l">Experiência</div></div>
+      <div class="met d"><div class="n">6</div><div class="l">Dias seguidos</div></div>
+    </div>
+    <div style="font-size:11.5px;color:var(--gam);font-weight:700;margin-top:10px">
+      ↑ +30 de experiência agora</div>
+  </div>
+
+  <div class="bloco"><div class="cap">Conquista desbloqueada</div>
+    <div style="background:var(--gamSuave);border:1.5px solid var(--gamBorda);
+         border-radius:11px;padding:14px;display:flex;align-items:center;gap:12px">
+      <div style="width:38px;height:38px;border-radius:11px;background:var(--gam);
+           display:grid;place-items:center;flex:none;color:#fff;font-weight:800;font-size:16px">5</div>
+      <div><div style="font-size:13.5px;font-weight:700;color:var(--gam)">Cinco seguidos</div>
+        <div style="font-size:11.5px;color:var(--textoSuave)">5 dias consecutivos concluindo</div></div>
+    </div>
+  </div>
+
+  <div class="bloco"><div class="cap">Próxima em Normalização</div>
+    <div style="background:var(--superficieAlt);border:1px solid var(--borda);
+         border-radius:10px;padding:13px">
+      <div style="font-size:13px;font-weight:600;color:var(--textoForte);margin-bottom:5px">
+        Trabalho de normalização até a 3FN</div>
+      <div style="font-size:11.5px;color:var(--perigo);font-weight:600">Atrasada há 4 dias</div>
+    </div>
+  </div>
+`);
+</script></body></html>

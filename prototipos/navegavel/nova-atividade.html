@@ -1,0 +1,101 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Vértice — Nova atividade</title><link rel="stylesheet" href="base.css"></head>
+<body><script src="ui.js"></script><script>
+montar('atividades', `
+  <div class="cabeca">
+    <div>
+      <div style="font-size:12.5px;color:var(--textoSuave);margin-bottom:6px">
+        <a href="atividades.html" style="color:var(--primariaForte);font-weight:600">‹ Atividades</a></div>
+      <h1>Nova atividade</h1>
+    </div>
+  </div>
+
+  <div class="form">
+    <div class="cp erro">
+      <label>Título <i>*</i></label>
+      <div class="in ph">Ex.: Lista de exercícios do capítulo 4</div>
+      <div class="msg">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        O título precisa de pelo menos 3 caracteres.
+      </div>
+    </div>
+
+    <div class="cp">
+      <label>Descrição <em>opcional</em></label>
+      <div class="in area ph">O que precisa ser feito, onde está o material, o que entregar…</div>
+    </div>
+
+    <div class="linha2">
+      <div class="cp">
+        <label>Disciplina <i>*</i></label>
+        <div class="in sel">Banco de Dados
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="cp">
+        <label>Conteúdo <i>*</i></label>
+        <div class="in sel">Normalização
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="ajuda">É o conteúdo que recebe o progresso desta atividade.</div>
+      </div>
+    </div>
+
+    <div class="cp">
+      <label>Peso <em>quanto essa atividade representa do conteúdo</em></label>
+      <div class="escala">
+        <span>1</span><span>2</span><span class="on">3</span><span>4</span><span>5</span>
+      </div>
+      <div class="ajuda">Peso 3 de 5 — vale 3 dos 47 pontos de Banco de Dados.
+        Concluir move a barra em 6%.</div>
+    </div>
+
+    <div class="linha2">
+      <div class="cp">
+        <label>Prazo <i>*</i></label>
+        <div class="in">25/09/2026</div>
+        <div class="ajuda" style="color:var(--fazendo);font-weight:600">
+          📅 Esse prazo cai numa sexta-feira, véspera de feriado.</div>
+      </div>
+      <div class="cp">
+        <label>Prioridade</label>
+        <div class="in sel">Alta
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+    </div>
+
+    <div class="cp" style="margin-bottom:0">
+      <label>Responsável <em>opcional</em></label>
+      <div class="chips">
+        <span class="chip">Sem responsável</span>
+        <span class="chip">Andrey</span>
+        <span class="chip on">Matheus</span>
+        <span class="chip">Bruna</span>
+      </div>
+      <div class="ajuda">Sem responsável, a atividade não gera experiência ao ser concluída.</div>
+    </div>
+
+    <div class="acoes">
+      <button class="btn sec">Cancelar</button>
+      <button class="btn">Salvar atividade</button>
+    </div>
+  </div>
+`, `
+  <div class="bloco"><div class="cap">Onde isso entra</div>
+    <div style="background:var(--superficieAlt);border:1px solid var(--borda);
+         border-radius:11px;padding:15px">
+      <div style="font-size:12px;color:var(--textoSuave);margin-bottom:11px">
+        A atividade se ancora num conteúdo, e o conteúdo numa disciplina.</div>
+      <div style="font-size:13px;line-height:2">
+        <div style="font-weight:700;color:var(--textoForte)">Banco de Dados</div>
+        <div style="padding-left:14px;color:var(--texto)">└ Normalização</div>
+        <div style="padding-left:30px;color:var(--primariaForte);font-weight:700">
+          └ esta atividade</div>
+      </div>
+    </div>
+  </div>
+  <div class="bloco"><div class="cap">Efeito no progresso</div>
+    ${barra('Normalização — hoje', 60, '')}
+    <div style="font-size:11.5px;color:var(--textoSuave);margin-top:11px">
+      Ao ser concluída, sobe para <b style="color:var(--primariaForte)">80%</b>.</div>
+  </div>
+`);
+</script></body></html>

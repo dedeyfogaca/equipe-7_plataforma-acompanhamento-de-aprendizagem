@@ -1,0 +1,57 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Vértice — Painel</title><link rel="stylesheet" href="base.css"></head>
+<body><script src="ui.js"></script><script>
+const ATIVIDADES = [
+  { titulo:'Modelagem relacional — lista de exercícios', disciplina:'Banco de Dados',
+    conteudo:'Normalização', situacao:'fazendo', peso:3, total:47, move:6,
+    prazo:'Vence em 2 dias', classePrazo:'prox', prioridade:'Alta',
+    iniciais:'MS', cor:'#ffd5dc', corTexto:'#8b3a4a' },
+  { titulo:'Diagrama de classes do projeto integrador', disciplina:'Engenharia de Software',
+    conteudo:'UML', situacao:'fazendo', peso:4, total:31, move:13,
+    prazo:'Vence em 6 dias', prioridade:'Média',
+    iniciais:'AF', cor:'#d1d4f9', corTexto:'#3b3f6b' },
+  { titulo:'Implementar lista duplamente encadeada', disciplina:'Estrutura de Dados',
+    conteudo:'Listas encadeadas', situacao:'fazendo', peso:2, total:25, move:8,
+    prazo:'Vence em 9 dias', prioridade:'Baixa',
+    iniciais:'BC', cor:'#b6e3f4', corTexto:'#1c4a5e' },
+];
+
+montar('painel', `
+  <div class="cabeca">
+    <div><h1>Trio do TCC</h1>
+      <div class="sub">3 integrantes · 4 disciplinas · 24 atividades</div></div>
+    <button class="btn">+ Nova atividade</button>
+  </div>
+
+  <div class="secao">Progresso por disciplina</div>
+  <div class="painel-bloco">
+    ${barra('Banco de Dados', 72, '13 de 18 atividades · peso 34 de 47')}
+    ${barra('Engenharia de Software', 45, '5 de 11 atividades · peso 14 de 31')}
+    ${barra('Estrutura de Dados', 28, '3 de 9 atividades · peso 7 de 25')}
+  </div>
+
+  <div class="secao">Atividades</div>
+  ${filtros('fazendo')}
+  <div class="resumo">
+    <div class="c">Mostrando <b>3 atividades</b> em andamento</div>
+    <div class="ordem">Por prioridade
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+  </div>
+  <div class="lista">${ATIVIDADES.map(cartao).join('')}</div>
+`, `
+  <div class="bloco"><div class="cap">Calendário</div>${calendario()}</div>
+  <div class="bloco"><div class="cap">Meu desempenho</div>
+    <div class="metricas">
+      <div class="met"><div class="n">148</div><div class="l">Experiência</div></div>
+      <div class="met d"><div class="n">5</div><div class="l">Dias seguidos</div></div>
+    </div>
+  </div>
+  <div class="bloco">
+    <div class="cap">Progresso geral <span class="num" style="color:var(--primariaForte);font-size:12.5px">62%</span></div>
+    <div class="trilho"><i style="width:62%"></i></div>
+    <div style="font-size:11px;color:var(--textoSuave);margin-top:7px">
+      21 de 38 atividades concluídas no grupo</div>
+  </div>
+`);
+</script></body></html>

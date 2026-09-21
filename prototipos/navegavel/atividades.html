@@ -1,0 +1,63 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Vértice — Atividades</title><link rel="stylesheet" href="base.css"></head>
+<body><script src="ui.js"></script><script>
+const A = [
+  { titulo:'Trabalho de normalização até a 3FN', disciplina:'Banco de Dados',
+    conteudo:'Normalização', situacao:'atrasada', peso:5, total:47, move:11,
+    prazo:'Atrasada há 4 dias', classePrazo:'crit', prioridade:'Alta',
+    iniciais:'AF', cor:'#d1d4f9', corTexto:'#3b3f6b' },
+  { titulo:'Consultas com JOIN e subconsulta — exercícios 12 a 20', disciplina:'Banco de Dados',
+    conteudo:'Álgebra relacional', situacao:'atrasada', peso:3, total:47, move:6,
+    prazo:'Atrasada há 1 dia', classePrazo:'crit', prioridade:'Média',
+    iniciais:'MS', cor:'#ffd5dc', corTexto:'#8b3a4a' },
+];
+montar('atividades', `
+  <div class="cabeca">
+    <div><h1>Atividades</h1><div class="sub">Tudo o que o grupo tem para fazer</div></div>
+    <button class="btn">+ Nova atividade</button>
+  </div>
+  <div class="busca">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <span>Buscar por título ou descrição…</span>
+  </div>
+  ${filtros('atrasada')}
+  <div class="resumo">
+    <div class="c">Mostrando <b>2 atividades</b> atrasadas em <b>Banco de Dados</b></div>
+    <div class="ordem">Por prioridade
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
+  </div>
+  <div class="lista">${A.map(cartao).join('')}</div>
+  <div style="margin-top:22px;padding:22px;border:1px dashed var(--bordaForte);
+       border-radius:12px;text-align:center;background:var(--superficie)">
+    <div style="font-size:14px;font-weight:700;color:var(--textoForte);margin-bottom:4px">Só isso por aqui</div>
+    <div style="font-size:13px;color:var(--textoSuave)">As outras 22 atividades estão fora dos filtros.
+      <span style="color:var(--primariaForte);font-weight:700">Limpar filtros</span></div>
+  </div>
+`, `
+  <div class="bloco">
+    <div class="cap">Filtros <span class="limpar">Limpar</span></div>
+    <div class="campo"><label>Disciplina</label>
+      <div class="chips"><span class="chip on">Banco de Dados</span><span class="chip">Eng. de Software</span>
+        <span class="chip">Estrutura de Dados</span><span class="chip">Matemática</span></div></div>
+    <div class="campo"><label>Conteúdo</label><div class="inp ph">Todos os conteúdos</div></div>
+    <div class="campo"><label>Responsável</label>
+      <div class="chips"><span class="chip">Todos</span><span class="chip">Andrey</span>
+        <span class="chip">Matheus</span><span class="chip">Bruna</span></div></div>
+    <div class="campo"><label>Prioridade</label>
+      <div class="chips"><span class="chip">Alta</span><span class="chip">Média</span><span class="chip">Baixa</span></div></div>
+    <div class="campo"><label>Prazo</label>
+      <div class="chips"><span class="chip">Esta semana</span><span class="chip">Este mês</span><span class="chip">Sem prazo</span></div></div>
+  </div>
+  <div class="bloco" style="margin-top:auto">
+    <div class="cap">Resultado</div>
+    <div style="background:var(--superficieAlt);border:1px solid var(--borda);border-radius:10px;padding:13px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px">
+        <span style="font-size:12.5px;color:var(--textoSuave)">Atividades</span>
+        <span class="num" style="font-size:17px;font-weight:800;color:var(--textoForte)">2</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <span style="font-size:12.5px;color:var(--textoSuave)">Peso somado</span>
+        <span class="num" style="font-size:17px;font-weight:800;color:var(--textoForte)">8</span></div>
+    </div>
+  </div>
+`);
+</script></body></html>

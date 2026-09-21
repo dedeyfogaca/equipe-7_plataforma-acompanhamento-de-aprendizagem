@@ -1,0 +1,53 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Vértice — Acesso</title><link rel="stylesheet" href="base.css"></head>
+<body><script src="ui.js"></script><script>
+document.body.innerHTML = `
+<div class="acesso">
+  <div class="arte">
+    <div class="mk"><div class="v">V</div><b>VÉRTICE</b></div>
+    <h2>Você não vê só o que falta.<br>Vê o quanto já andou.</h2>
+    <p>Uma lista de tarefas diz que restam cinco itens. O Vértice diz que você
+       já cobriu 72% de Banco de Dados e quase nada de Estrutura de Dados.</p>
+    <div class="demo">
+      <div class="cap">Progresso do grupo</div>
+      ${barra('Banco de Dados', 72, '')}
+      ${barra('Engenharia de Software', 45, '')}
+      ${barra('Estrutura de Dados', 28, '')}
+    </div>
+  </div>
+
+  <div class="lado">
+    <h3>Entrar em um grupo</h3>
+    <div class="s">Escolha um grupo salvo neste dispositivo ou crie um novo.</div>
+
+    <div class="grupos">
+      <div class="gr">
+        <div class="ic">TT</div>
+        <div><div class="nm">Trio do TCC</div>
+          <div class="mt">3 integrantes · 24 atividades · 62% concluído</div></div>
+        <div class="seta">›</div>
+      </div>
+      <div class="gr">
+        <div class="ic">GE</div>
+        <div><div class="nm">Grupo de Estatística</div>
+          <div class="mt">2 integrantes · 9 atividades · 40% concluído</div></div>
+        <div class="seta">›</div>
+      </div>
+    </div>
+
+    <button class="btn g" style="width:100%;justify-content:center">+ Criar novo grupo</button>
+
+    <div class="ou">ou</div>
+
+    <button class="btn sec g" style="width:100%;justify-content:center">
+      Carregar dados de exemplo</button>
+    <div style="font-size:12px;color:var(--textoSuave);margin-top:10px;text-align:center">
+      Cria um grupo de demonstração já preenchido, para conhecer o sistema sem cadastrar nada.</div>
+
+    <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--borda);
+         font-size:12px;color:var(--textoSuave);line-height:1.6">
+      Os dados ficam salvos neste navegador. Não há senha: o acesso é pela seleção do grupo.
+    </div>
+  </div>
+</div>`;
+</script></body></html>

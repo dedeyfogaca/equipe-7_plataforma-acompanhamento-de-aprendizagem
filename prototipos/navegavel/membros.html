@@ -1,0 +1,77 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Vértice — Membros</title><link rel="stylesheet" href="base.css"></head>
+<body><script src="ui.js"></script><script>
+function membro(nm, fn, perfil, xp, dias, ini, cor, ct){
+  return `<div class="memb">
+    <div class="av" style="background:${cor};color:${ct}">${ini}</div>
+    <div class="nm">${nm}</div>
+    <div class="fn">${fn}</div>
+    <div class="pf ${perfil === 'Participante' ? 'p' : ''}">${perfil}</div>
+    <div class="st">
+      <div><b>${xp}</b><span>Experiência</span></div>
+      <div><b>${dias}</b><span>Dias</span></div>
+    </div>
+  </div>`;
+}
+montar('membros', `
+  <div class="cabeca">
+    <div><h1>Membros</h1><div class="sub">Quem participa do Trio do TCC</div></div>
+    <button class="btn">+ Novo membro</button>
+  </div>
+  <div class="membros">
+    ${membro('Andrey Fogaça','Documentação e telas','Organizador',148,5,'AF','#d1d4f9','#3b3f6b')}
+    ${membro('Matheus Saraiva','Banco de dados','Participante',178,6,'MS','#ffd5dc','#8b3a4a')}
+    ${membro('Bruna Carvalho','Pesquisa e revisão','Participante',96,2,'BC','#b6e3f4','#1c4a5e')}
+  </div>
+
+  <div style="margin-top:26px">
+    <div class="secao">Novo membro</div>
+    <div class="form" style="max-width:100%">
+      <div class="linha2">
+        <div class="cp"><label>Nome <i>*</i></label><div class="in ph">Nome do integrante</div></div>
+        <div class="cp"><label>Função no grupo <em>opcional</em></label>
+          <div class="in ph">Ex.: Revisão e slides</div></div>
+      </div>
+      <div class="linha2">
+        <div class="cp"><label>E-mail <em>opcional</em></label><div class="in ph">nome@email.com</div></div>
+        <div class="cp"><label>Perfil</label>
+          <div class="chips" style="margin-top:3px">
+            <span class="chip">Organizador</span><span class="chip on">Participante</span></div></div>
+      </div>
+      <div class="cp" style="margin-bottom:0">
+        <label>Avatar</label>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div class="av" style="width:52px;height:52px;font-size:17px;background:#ffdfbf;color:#8a5a20">?</div>
+          <button class="btn sec">🎲 Sortear outro</button>
+          <div style="font-size:12px;color:var(--textoSuave);max-width:280px">
+            A imagem é gerada por serviço externo a partir de uma semente sorteada.
+            Se o serviço não responder, aparecem as iniciais do nome.</div>
+        </div>
+      </div>
+      <div class="acoes">
+        <button class="btn sec">Cancelar</button><button class="btn">Cadastrar membro</button>
+      </div>
+    </div>
+  </div>
+`, `
+  <div class="bloco"><div class="cap">Permissões</div>
+    <div style="background:var(--superficieAlt);border:1px solid var(--borda);
+         border-radius:11px;padding:15px;font-size:12.5px;line-height:1.7">
+      <div style="font-weight:700;color:var(--primariaForte);margin-bottom:5px">Organizador</div>
+      <div style="color:var(--texto);margin-bottom:13px">Cria e exclui o grupo, gerencia membros,
+        disciplinas e conteúdos, e exclui atividade de qualquer integrante.</div>
+      <div style="font-weight:700;color:var(--aFazer);margin-bottom:5px">Participante</div>
+      <div style="color:var(--texto)">Cadastra, edita e conclui atividades.</div>
+      <div style="margin-top:11px;padding-top:11px;border-top:1px solid var(--borda);
+           color:var(--textoSuave);font-size:11.5px">RN07</div>
+    </div>
+  </div>
+  <div class="bloco"><div class="cap">Ao excluir um membro</div>
+    <div style="font-size:12.5px;color:var(--texto);line-height:1.7">
+      As atividades dele <b>não são apagadas</b>: ficam sem responsável e deixam de gerar
+      experiência ao serem concluídas.
+      <div style="color:var(--textoSuave);font-size:11.5px;margin-top:9px">RN02 e RN10</div>
+    </div>
+  </div>
+`);
+</script></body></html>

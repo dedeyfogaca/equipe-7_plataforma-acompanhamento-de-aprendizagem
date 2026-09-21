@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Vértice — Protótipo navegável do MVP</title>
+<link rel="stylesheet" href="base.css">
+<style>
+body{background:var(--fundo);padding:0}
+.topo{background:var(--textoForte);color:#fff;padding:34px 40px 30px}
+.topo .mk{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.topo .mk .v{width:36px;height:36px;border-radius:11px;background:var(--primaria);
+  display:grid;place-items:center;font-weight:800;font-size:18px}
+.topo .mk b{font-size:20px;font-weight:800;letter-spacing:.12em}
+.topo h1{font-size:27px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.topo p{font-size:14px;color:#9fb0c4;max-width:640px;line-height:1.65}
+.corpo{padding:30px 40px 50px;max-width:1180px}
+h2{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--textoSuave);
+  font-weight:700;margin:0 0 14px}
+h2:not(:first-child){margin-top:34px}
+
+.fluxo{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+.passo{background:var(--superficie);border:1px solid var(--borda);border-radius:11px;
+  padding:13px 16px;display:flex;align-items:center;gap:15px;text-decoration:none;color:inherit}
+.passo:hover{border-color:var(--primaria)}
+.passo .n{width:27px;height:27px;border-radius:9px;background:var(--primariaSuave);
+  color:var(--primariaForte);display:grid;place-items:center;font-family:JB;
+  font-size:12px;font-weight:700;flex:none}
+.passo.g .n{background:var(--gamSuave);color:var(--gam)}
+.passo .tx{flex:1;min-width:0}
+.passo .tx b{display:block;font-size:14.5px;font-weight:700;color:var(--textoForte)}
+.passo .tx span{font-size:12.5px;color:var(--textoSuave)}
+.passo .rf{font-family:JB;font-size:11px;font-weight:700;color:var(--textoSuave);
+  background:var(--superficieAlt);border:1px solid var(--borda);border-radius:6px;
+  padding:4px 9px;flex:none}
+.passo .ir{color:var(--bordaForte);font-size:17px;flex:none}
+
+.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.extra{background:var(--superficie);border:1px solid var(--borda);border-radius:11px;
+  padding:14px 16px;text-decoration:none;color:inherit}
+.extra:hover{border-color:var(--primaria)}
+.extra b{display:block;font-size:14px;font-weight:700;color:var(--textoForte);margin-bottom:3px}
+.extra span{font-size:12.5px;color:var(--textoSuave);line-height:1.5}
+
+.nota{margin-top:30px;background:var(--superficieAlt);border:1px solid var(--borda);
+  border-radius:12px;padding:18px 20px;font-size:13px;color:var(--texto);line-height:1.7}
+.nota b{color:var(--textoForte)}
+</style>
+</head>
+<body>
+
+<div class="topo">
+  <div class="mk"><div class="v">V</div><b>VÉRTICE</b></div>
+  <h1>Protótipo navegável do MVP</h1>
+  <p>As oito telas necessárias para executar o fluxo completo, ligadas entre si.
+     A barra lateral de cada tela navega para as demais. Nenhuma funcionalidade
+     classificada como desejável foi prototipada.</p>
+</div>
+
+<div class="corpo">
+  <h2>O fluxo completo, na ordem da demonstração</h2>
+  <div class="fluxo">
+    <a class="passo" href="acesso.html">
+      <div class="n">1</div>
+      <div class="tx"><b>Acesso</b><span>Entrar num grupo salvo ou carregar os dados de exemplo</span></div>
+      <div class="rf">RF01 · RF20</div><div class="ir">›</div></a>
+
+    <a class="passo" href="vazio.html">
+      <div class="n">2</div>
+      <div class="tx"><b>Primeiro acesso</b><span>Grupo recém-criado, ensinando por onde começar</span></div>
+      <div class="rf">RNF07</div><div class="ir">›</div></a>
+
+    <a class="passo" href="disciplinas.html">
+      <div class="n">3</div>
+      <div class="tx"><b>Disciplinas</b><span>Cadastrar a disciplina e os conteúdos dentro dela</span></div>
+      <div class="rf">RF13 · RF14</div><div class="ir">›</div></a>
+
+    <a class="passo" href="nova-atividade.html">
+      <div class="n">4</div>
+      <div class="tx"><b>Nova atividade</b><span>Vincular ao conteúdo, definir peso, prazo e responsável</span></div>
+      <div class="rf">RF03</div><div class="ir">›</div></a>
+
+    <a class="passo" href="atividades.html">
+      <div class="n">5</div>
+      <div class="tx"><b>Atividades</b><span>Encontrar a atividade com busca e filtros</span></div>
+      <div class="rf">RF04</div><div class="ir">›</div></a>
+
+    <a class="passo g" href="detalhe.html">
+      <div class="n">6</div>
+      <div class="tx"><b>Concluir a atividade</b><span>Progresso antes e depois, e a experiência creditada</span></div>
+      <div class="rf">RF05 · RF15</div><div class="ir">›</div></a>
+
+    <a class="passo" href="painel.html">
+      <div class="n">7</div>
+      <div class="tx"><b>Painel</b><span>O progresso da disciplina já atualizado</span></div>
+      <div class="rf">RF06 · RF10 · RF11</div><div class="ir">›</div></a>
+  </div>
+
+  <h2>Fora do fluxo</h2>
+  <div class="extras">
+    <a class="extra" href="membros.html">
+      <b>Membros</b><span>Cartões dos integrantes, cadastro e sorteio do avatar (RF02, RF19)</span></a>
+    <a class="extra" href="painel.html">
+      <b>Painel com dados</b><span>Filtro por situação e calendário com prazos e feriados</span></a>
+    <a class="extra" href="atividades.html">
+      <b>Filtro aplicado</b><span>Painel lateral de filtros e o resultado com peso somado</span></a>
+  </div>
+
+  <div class="nota">
+    <b>Sobre este protótipo.</b> Foi escrito em HTML e CSS com os mesmos tokens de cor,
+    tipografia e espaçamento do <code>theme.js</code> da aplicação — não numa ferramenta de
+    desenho. Por isso as decisões visíveis aqui podem ir para o código como decisão já
+    tomada: o peso é um anel de cinco segmentos, a gamificação é violeta
+    <code>#7C3AED</code>, a coluna de navegação tem 232 pixels.
+    <br><br>
+    Os dados são fixos e as telas não gravam nada. O objetivo é demonstrar o caminho e a
+    aparência, não simular o funcionamento.
+  </div>
+</div>
+
+</body>
+</html>
