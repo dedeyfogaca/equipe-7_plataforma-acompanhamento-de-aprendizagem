@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 560" width="3420" height="1680">
+<rect width="1140" height="560" fill="#FFFFFF"/>
+<defs>
+<marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5B6678"/></marker>
+<marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0891B2"/></marker>
+</defs>
+<text x="570.0" y="38" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0E7490" font-weight="700" text-anchor="middle" letter-spacing="2.2">MAPA DE NAVEGAÇÃO — TELAS DO MVP</text>
+<rect x="26" y="70" width="200" height="290" rx="12" fill="#FAFBFE" stroke="#CDD4E1" stroke-width="1.4" stroke-dasharray="7 5"/>
+<text x="126" y="94" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="10.5" fill="#5B6678" font-weight="700" text-anchor="middle" letter-spacing="1.5">FORA DA SESSÃO</text>
+<rect x="40" y="112" width="172" height="58" rx="10" fill="#E0F7FC" stroke="#0891B2" stroke-width="2"/>
+<text x="126.0" y="138.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Acesso</text>
+<text x="126.0" y="156.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">seleção do grupo</text>
+<rect x="40" y="200" width="172" height="58" rx="10" fill="#F5F7FC" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="126.0" y="226.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Primeiro acesso</text>
+<text x="126.0" y="244.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">grupo ainda vazio</text>
+<text x="126" y="300" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="11" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">Sem senha: o acesso</text>
+<text x="126" y="316" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="11" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">é a escolha do grupo</text>
+<rect x="244" y="70" width="866" height="440" rx="12" fill="#FFFFFF" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="677" y="94" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="10.5" fill="#0E7490" font-weight="700" text-anchor="middle" letter-spacing="1.5">DENTRO DA SESSÃO</text>
+<rect x="260" y="200" width="172" height="58" rx="10" fill="#E0F7FC" stroke="#0891B2" stroke-width="2.2"/>
+<text x="346.0" y="226.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Painel</text>
+<text x="346.0" y="244.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">entra por aqui</text>
+<rect x="490" y="120" width="172" height="58" rx="10" fill="#F5F7FC" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="576.0" y="146.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Disciplinas</text>
+<text x="576.0" y="164.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">e conteúdos</text>
+<rect x="720" y="120" width="172" height="58" rx="10" fill="#FAFBFE" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="806.0" y="146.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Nova disciplina</text>
+<text x="806.0" y="164.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">formulário</text>
+<rect x="490" y="200" width="172" height="58" rx="10" fill="#F5F7FC" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="576.0" y="226.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Membros</text>
+<text x="576.0" y="244.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">e avatar</text>
+<rect x="720" y="200" width="172" height="58" rx="10" fill="#FAFBFE" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="806.0" y="226.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Novo membro</text>
+<text x="806.0" y="244.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">formulário</text>
+<rect x="490" y="280" width="172" height="58" rx="10" fill="#F5F7FC" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="576.0" y="306.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Atividades</text>
+<text x="576.0" y="324.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">busca e filtros</text>
+<rect x="720" y="280" width="172" height="58" rx="10" fill="#FAFBFE" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="806.0" y="306.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Nova atividade</text>
+<text x="806.0" y="324.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">formulário</text>
+<rect x="490" y="390" width="172" height="58" rx="10" fill="#F5F7FC" stroke="#CDD4E1" stroke-width="1.6"/>
+<text x="576.0" y="416.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#0B1220" font-weight="700" text-anchor="middle" letter-spacing="0">Detalhe</text>
+<text x="576.0" y="434.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">da atividade</text>
+<rect x="720" y="390" width="172" height="58" rx="10" fill="#F1EAFE" stroke="#7C3AED" stroke-width="2"/>
+<text x="806.0" y="416.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="15" fill="#7C3AED" font-weight="700" text-anchor="middle" letter-spacing="0">Concluída</text>
+<text x="806.0" y="434.0" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">+ experiência</text>
+<line x1="212" y1="141" x2="260" y2="210" stroke="#0891B2" stroke-width="2" marker-end="url(#c)"/>
+<line x1="212" y1="229" x2="260" y2="224" stroke="#5B6678" stroke-width="1.8" marker-end="url(#p)"/>
+<path d="M432 229 L460 229 L460 149 L490 149" fill="none" stroke="#5B6678" stroke-width="1.8" marker-end="url(#p)"/>
+<path d="M432 229 L460 229 L460 229 L490 229" fill="none" stroke="#5B6678" stroke-width="1.8" marker-end="url(#p)"/>
+<path d="M432 229 L460 229 L460 309 L490 309" fill="none" stroke="#5B6678" stroke-width="1.8" marker-end="url(#p)"/>
+<line x1="662" y1="149" x2="720" y2="149" stroke="#5B6678" stroke-width="1.8" marker-end="url(#p)"/>
+<line x1="662" y1="229" x2="720" y2="229" stroke="#5B6678" stroke-width="1.8" marker-end="url(#p)"/>
+<line x1="662" y1="309" x2="720" y2="309" stroke="#5B6678" stroke-width="1.8" marker-end="url(#p)"/>
+<path d="M576 338 L576 390" fill="none" stroke="#5B6678" stroke-width="1.8" marker-end="url(#p)"/>
+<text x="586" y="368" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="11" fill="#5B6678" font-weight="400" text-anchor="start" letter-spacing="0">abrir</text>
+<line x1="662" y1="419" x2="720" y2="419" stroke="#7C3AED" stroke-width="2" marker-end="url(#p)"/>
+<text x="696" y="408" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="11" fill="#7C3AED" font-weight="700" text-anchor="end" letter-spacing="0">concluir</text>
+<path d="M806 448 L806 488 L346 488 L346 258" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#p)"/>
+<text x="677" y="473" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="11.5" fill="#7C3AED" font-weight="700" text-anchor="middle" letter-spacing="0">progresso e experiência atualizados</text>
+<text x="570.0" y="540" font-family="Space Grotesk, 'DejaVu Sans', sans-serif" font-size="12" fill="#5B6678" font-weight="400" text-anchor="middle" letter-spacing="0">A barra lateral leva a qualquer tela a partir de qualquer outra</text>
+</svg>
