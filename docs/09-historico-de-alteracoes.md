@@ -5,7 +5,7 @@
 
 ---
 
-Registro das mudanças aplicadas ao Documento de Visão e Requisitos entre a Entrega 1 (14/08/2026) e a Entrega 2 (08/09/2026), e da revisão feita em 17/09/2026 a partir da conferência com o código implementado. A numeração dos requisitos existentes foi preservada; os itens novos foram acrescentados ao final de cada tabela.
+Registro das mudanças aplicadas ao Documento de Visão e Requisitos ao longo do bimestre: da Entrega 1 (14/08/2026) para a Entrega 2 (08/09/2026), a revisão de 17/09/2026 feita a partir da conferência com o código, e os acréscimos da Entrega 3 (25/09/2026). A numeração dos requisitos existentes foi preservada; os itens novos foram acrescentados ao final de cada tabela.
 
 ---
 
@@ -92,6 +92,38 @@ Itens identificados na conferência que dependem de alteração no código, e n�
 |---|---|
 | Responsável obrigatório no formulário de atividade | A validação da aplicação exige responsável para salvar a atividade. A documentação prevê o contrário em quatro pontos: RN06 lista como obrigatórios apenas título e prazo, RN10 trata explicitamente das atividades sem responsável, o fluxo alternativo 5A do UC05 descreve a atividade aceita sem responsável e o modelo lógico declara `id_responsavel` como opcional. **A documentação está correta; a correção cabe ao código.** |
 | Rodapé com dados de contato de um único integrante | O rodapé exibe contatos pessoais em todas as telas, sem requisito correspondente. A definir entre remover a seção ou substituí-la pela identificação dos dois integrantes da equipe. |
+
+---
+
+## Entrega 3 — 25/09/2026
+
+A terceira entrega não altera requisitos: acrescenta o planejamento do trabalho, a arquitetura, os protótipos e a definição do MVP. As correções abaixo são de coerência, não de escopo.
+
+| Data | Item | Alteração | Motivo |
+|---|---|---|---|
+| 25/09/2026 | Doc. 12 | Documento novo: backlog com 24 tarefas, cada uma ligada ao requisito que a origina, com prioridade, responsável e situação | Exigência da Etapa 3 do manual |
+| 25/09/2026 | Doc. 13 | Documento novo: arquitetura em camadas, tecnologias justificadas e o caminho previsto até o banco relacional | Exigência da Etapa 4 |
+| 25/09/2026 | Doc. 14 | Documento novo: classificação dos 22 requisitos em indispensável, desejável e futura, e a definição do fluxo completo | Exigência das Etapas 6 e 8.1 |
+| 25/09/2026 | Diagramas | Dois desenhos novos em SVG: arquitetura prevista e mapa de navegação das telas do MVP | Exigências das Etapas 4.1 e 7.2 |
+| 25/09/2026 | Protótipos | A pasta `prototipos/`, até então vazia, recebeu o levantamento de telas, as oito telas do MVP em imagem e o protótipo navegável em HTML | Exigência da Etapa 7.3 |
+| 25/09/2026 | Doc. 11 | A matriz ganhou a coluna "No MVP?", ligando cada requisito à sua situação na primeira versão | Exigência da Etapa 9 |
+| 25/09/2026 | README | Seções de MVP e de organização do projeto, conforme o modelo do manual | Exigência da Etapa 4.3 |
+| 25/09/2026 | README | **Correção.** Constava "RNF01 a RNF09" e a relação de casos de uso especificados estava desatualizada, sem o UC02 e o UC12 | Os requisitos foram acrescentados na revisão de 17/09 e o índice não acompanhou |
+
+---
+
+## Revisão visual proposta na Entrega 3
+
+A conferência das telas apontou problemas de interface que não alteram requisito nenhum, mas mudam como o sistema é usado. Estão registrados como a tarefa **T24** do [backlog](12-backlog.md) e ainda não foram aplicados ao código.
+
+| Item | Situação anterior | Proposta |
+|---|---|---|
+| Layout | Conteúdo centralizado, com as laterais vazias | Três colunas: navegação à esquerda, conteúdo no meio, contexto à direita |
+| Situações da atividade | Quatro contadores sem função | Quatro filtros: clicar em "Atrasadas" mostra só as atrasadas |
+| Próximos feriados | Bloco próprio no painel, ocupando espaço das atividades | Pontos no calendário, junto com prazos e atrasos |
+| Peso da atividade | Selo "Peso 3" ao lado da prioridade, confundido com ela | Anel de cinco segmentos à esquerda, junto ao check, com o efeito no progresso ao passar o mouse |
+| Cor da gamificação | Verde-limão, igual ao verde de "concluída" | Violeta `#7C3AED`, que não ocupa nenhum outro papel no sistema |
+| Tipografia | Três famílias: serifada nos títulos, Space Grotesk no corpo, Space Mono em todos os rótulos | Manrope em pesos variados, com monoespaçada apenas em números |
 
 ---
 

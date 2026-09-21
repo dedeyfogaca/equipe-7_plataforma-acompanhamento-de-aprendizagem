@@ -71,7 +71,9 @@ O Vértice é uma plataforma web para grupos de estudo organizarem suas discipli
 ├── diagramas/          Casos de uso, classes e fluxos de processo
 │   └── png/            Versões em imagem dos diagramas
 ├── banco-de-dados/     Modelo conceitual, modelo lógico, dicionário e script SQL
-├── prototipos/         Mapa de navegação e telas
+├── prototipos/         Mapa de navegação, telas e protótipo navegável
+│   ├── telas/          As oito telas do MVP em imagem
+│   └── navegavel/      Protótipo clicável: abra o index.html no navegador
 └── src/                Código-fonte da aplicação
 ```
 
@@ -89,11 +91,14 @@ O Vértice é uma plataforma web para grupos de estudo organizarem suas discipli
 | 04 | [Público-Alvo e Perfis do Usuário](docs/04-publico-alvo-e-perfis-do-usuario.md) | Estudante organizador e estudante participante |
 | 05 | [Escopo](docs/05-escopo.md) | Incluído, não incluído e restrições |
 | 06 | [Requisitos Funcionais](docs/06-requisitos-funcionais.md) | RF01 a RF22 |
-| 07 | [Requisitos Não Funcionais](docs/07-requisitos-nao-funcionais.md) | RNF01 a RNF09 |
+| 07 | [Requisitos Não Funcionais](docs/07-requisitos-nao-funcionais.md) | RNF01 a RNF10 |
 | 08 | [Regras de Negócio](docs/08-regras-de-negocio.md) | RN01 a RN17 |
-| 09 | [Histórico de Alterações](docs/09-historico-de-alteracoes.md) | Mudanças entre a Entrega 1 e a Entrega 2 |
-| 10 | [Especificação dos Casos de Uso](docs/10-casos-de-uso.md) | UC01, UC03, UC05, UC07, UC08 e UC09 detalhados |
-| 11 | [Matriz de Rastreabilidade](docs/11-matriz-de-rastreabilidade.md) | Requisito → caso de uso → entidades → tela |
+| 09 | [Histórico de Alterações](docs/09-historico-de-alteracoes.md) | Mudanças da Entrega 1 à Entrega 3, com data e motivo |
+| 10 | [Especificação dos Casos de Uso](docs/10-casos-de-uso.md) | UC01, UC02, UC03, UC05, UC07, UC08, UC09 e UC12 detalhados |
+| 11 | [Matriz de Rastreabilidade](docs/11-matriz-de-rastreabilidade.md) | Requisito → caso de uso → entidades → tela → MVP |
+| 12 | [Backlog do Projeto](docs/12-backlog.md) | 24 tarefas com requisito, prioridade, responsável e situação |
+| 13 | [Arquitetura e Tecnologias](docs/13-arquitetura.md) | Camadas, serviços externos e caminho até o banco relacional |
+| 14 | [Produto Mínimo Viável](docs/14-mvp.md) | Classificação dos requisitos e o fluxo completo |
 
 ### Modelagem do software
 
@@ -104,6 +109,8 @@ O Vértice é uma plataforma web para grupos de estudo organizarem suas discipli
 | [Classes](diagramas/02-classes.md) | Oito classes com atributos, operações e cardinalidades |
 | [Fluxo — Concluir atividade](diagramas/03-atividade-concluir.md) | Recálculo de progresso, experiência, ofensiva e conquistas |
 | [Fluxo — Cadastrar atividade](diagramas/04-atividade-cadastrar.md) | Vínculo com disciplina e conteúdo, validações e padrões |
+| [Arquitetura](diagramas/svg/arquitetura.svg) | Camadas da aplicação, persistência e serviços externos |
+| [Mapa de navegação](diagramas/svg/mapa-navegacao.svg) | Como as oito telas do MVP se conectam |
 
 ### Modelagem do banco de dados
 
@@ -113,6 +120,32 @@ O Vértice é uma plataforma web para grupos de estudo organizarem suas discipli
 | [Modelo lógico](banco-de-dados/02-modelo-logico.md) | Tabelas, chaves primárias e estrangeiras, tipos e restrições |
 | [Dicionário de dados](banco-de-dados/03-dicionario-de-dados.md) | Descrição campo a campo das oito tabelas |
 | [Script de criação](banco-de-dados/04-script-criacao.sql) | DDL em MySQL 8, carga inicial e consultas de referência |
+
+---
+
+## MVP
+
+A primeira versão funcional entrega o ciclo completo de medição de aprendizagem: **entrar no grupo, montar a estrutura de disciplinas e conteúdos, cadastrar atividades com peso, concluí-las e ver o progresso subir** — com a experiência creditada a quem concluiu.
+
+| | Requisitos | O que entrega |
+|---|---|---|
+| **No MVP** | RF01 a RF06, RF08, RF09, RF10, RF11, RF13, RF14, RF15, RF19, RF20 | O ciclo fechado, do cadastro à medida, nos temas claro e escuro |
+| **Desejável** | RF07, RF12, RF16, RF17, RF18, RF21, RF22 | Ofensiva, conquistas, histórico e sinalização de datas |
+| **Futura** | — | Banco relacional, notificações, exportação e app nativo |
+
+A classificação completa, com justificativa item a item, está em [Produto Mínimo Viável](docs/14-mvp.md). O protótipo navegável em [`prototipos/navegavel/`](prototipos/navegavel/index.html) cobre exatamente as telas do MVP — nada além.
+
+---
+
+## Organização do projeto
+
+| Onde | O que está lá |
+|---|---|
+| `docs/` | Documento de Visão e Requisitos completo: contexto, requisitos, regras, casos de uso, rastreabilidade, backlog, arquitetura e MVP |
+| `diagramas/` | Casos de uso, classes, fluxos de atividade, arquitetura e mapa de navegação — em Mermaid dentro do `.md` ou em SVG na pasta `svg/` |
+| `banco-de-dados/` | Modelo conceitual, modelo lógico, dicionário de dados e o script de criação em MySQL |
+| `prototipos/` | Levantamento de telas, mapa de navegação, as oito telas em imagem e o protótipo clicável |
+| `src/` | Código-fonte da aplicação React |
 
 ---
 
@@ -141,4 +174,4 @@ npm run preview   # pré-visualiza a versão de produção
 |---|---|---|
 | 1 | 14/08/2026 | Documento de Visão e Requisitos |
 | 2 | 08/09/2026 | Documento revisado, modelagem do software e modelagem do banco de dados |
-| 3 | 25/09/2026 | Repositório organizado, protótipos e definição do MVP |
+| 3 | 25/09/2026 | Repositório organizado, backlog, arquitetura, mapa de navegação, protótipos e definição do MVP |

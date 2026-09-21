@@ -5,36 +5,36 @@
 
 ---
 
-A matriz demonstra que os artefatos da Entrega 2 não foram produzidos separadamente. Cada linha conecta um requisito ao caso de uso que o realiza, às entidades de dados que o sustentam e à tela em que ele aparece.
+A matriz demonstra que os artefatos não foram produzidos separadamente. Cada linha conecta um requisito ao caso de uso que o realiza, às entidades de dados que o sustentam, à tela em que ele aparece e à sua situação no [MVP](14-mvp.md).
 
 ---
 
 ## Requisitos funcionais
 
-| Requisito | Caso de uso | Entidades envolvidas | Tela prevista |
-|---|---|---|---|
-| **RF01** — Criar, selecionar e excluir grupos | UC01 · Gerenciar grupo de estudo | grupo | Acesso |
-| **RF02** — Gerenciar membros | UC02 · Gerenciar membros | grupo, membro | Membros |
-| **RF03** — Cadastrar, editar e excluir atividades | UC05 · Cadastrar atividade | atividade, conteudo, disciplina, membro | Formulário de atividade |
-| **RF04** — Listar atividades com busca, filtros e ordenação | UC06 · Consultar atividades | atividade, conteudo, disciplina, membro | Atividades |
-| **RF05** — Exibir detalhe e alterar status | UC06 · Consultar atividades / UC07 · Concluir atividade | atividade, membro | Detalhe da atividade |
-| **RF06** — Painel com totais, atrasadas e próximas entregas | UC08 · Acompanhar progresso | atividade | Painel |
-| **RF07** — Sinalizar prazo em feriado nacional | UC06 · Consultar atividades / UC08 · Acompanhar progresso | atividade *(atores externos: BrasilAPI e Nager.Date)* | Painel e Atividades |
-| **RF08** — Alternar tema claro e escuro | UC10 · Alternar tema | *nenhuma; preferência local do dispositivo* | Cabeçalho, em todas as telas |
-| **RF09** — Encerrar a sessão do grupo | UC11 · Encerrar sessão | grupo | Cabeçalho, em todas as telas |
-| **RF10** — Calcular e exibir progresso do conteúdo | UC08 · Acompanhar progresso | conteudo, atividade | Disciplinas e Painel |
-| **RF11** — Barra de progresso por disciplina | UC08 · Acompanhar progresso | disciplina, conteudo, atividade | Painel |
-| **RF12** — Registrar e exibir histórico de progresso | UC07 · Concluir atividade / UC08 · Acompanhar progresso | progresso_historico, disciplina | Painel |
-| **RF13** — Gerenciar disciplinas | UC03 · Gerenciar disciplinas | grupo, disciplina | Disciplinas |
-| **RF14** — Gerenciar conteúdos | UC04 · Gerenciar conteúdos | disciplina, conteudo | Disciplinas, seção de conteúdos |
-| **RF15** — Atribuir experiência por atividade concluída | UC07 · Concluir atividade | atividade, membro | Detalhe da atividade e Desempenho |
-| **RF16** — Calcular e exibir a ofensiva | UC07 · Concluir atividade / UC09 · Consultar painel de desempenho | atividade, membro | Desempenho |
-| **RF17** — Conceder e exibir conquistas | UC07 · Concluir atividade / UC09 · Consultar painel de desempenho | conquista, membro_conquista, membro | Desempenho |
-| **RF18** — Painel de desempenho do grupo | UC09 · Consultar painel de desempenho | membro, atividade, conquista, membro_conquista | Desempenho |
-| **RF19** — Gerar e sortear o avatar do membro | UC02 · Gerenciar membros | membro *(ator externo: DiceBear)* | Membros e Desempenho |
-| **RF20** — Carregar dados de exemplo | UC12 · Carregar dados de exemplo | grupo, membro, disciplina, conteudo, atividade | Acesso |
-| **RF21** — Relação dos próximos feriados nacionais | UC08 · Acompanhar progresso | *nenhuma; dado obtido de serviço externo* | Painel |
-| **RF22** — Sinalizar prazo em fim de semana | UC06 · Consultar atividades / UC08 · Acompanhar progresso | atividade | Painel, Atividades e Formulário de atividade |
+| Requisito | Caso de uso | Entidades envolvidas | Tela prevista | No MVP? |
+|---|---|---|---|---|
+| **RF01** — Criar, selecionar e excluir grupos | UC01 · Gerenciar grupo de estudo | grupo | Acesso | Sim |
+| **RF02** — Gerenciar membros | UC02 · Gerenciar membros | grupo, membro | Membros | Sim |
+| **RF03** — Cadastrar, editar e excluir atividades | UC05 · Cadastrar atividade | atividade, conteudo, disciplina, membro | Formulário de atividade | Sim |
+| **RF04** — Listar atividades com busca, filtros e ordenação | UC06 · Consultar atividades | atividade, conteudo, disciplina, membro | Atividades | Sim |
+| **RF05** — Exibir detalhe e alterar status | UC06 · Consultar atividades / UC07 · Concluir atividade | atividade, membro | Detalhe da atividade | Sim |
+| **RF06** — Painel com totais, atrasadas e próximas entregas | UC08 · Acompanhar progresso | atividade | Painel | Sim |
+| **RF07** — Sinalizar prazo em feriado nacional | UC06 · Consultar atividades / UC08 · Acompanhar progresso | atividade *(atores externos: BrasilAPI e Nager.Date)* | Painel e Atividades | Não |
+| **RF08** — Alternar tema claro e escuro | UC10 · Alternar tema | *nenhuma; preferência local do dispositivo* | Barra lateral, em todas as telas | Sim |
+| **RF09** — Encerrar a sessão do grupo | UC11 · Encerrar sessão | grupo | Cabeçalho, em todas as telas | Sim |
+| **RF10** — Calcular e exibir progresso do conteúdo | UC08 · Acompanhar progresso | conteudo, atividade | Disciplinas e Painel | Sim |
+| **RF11** — Barra de progresso por disciplina | UC08 · Acompanhar progresso | disciplina, conteudo, atividade | Painel | Sim |
+| **RF12** — Registrar e exibir histórico de progresso | UC07 · Concluir atividade / UC08 · Acompanhar progresso | progresso_historico, disciplina | Painel | Não |
+| **RF13** — Gerenciar disciplinas | UC03 · Gerenciar disciplinas | grupo, disciplina | Disciplinas | Sim |
+| **RF14** — Gerenciar conteúdos | UC04 · Gerenciar conteúdos | disciplina, conteudo | Disciplinas, seção de conteúdos | Sim |
+| **RF15** — Atribuir experiência por atividade concluída | UC07 · Concluir atividade | atividade, membro | Detalhe da atividade e Desempenho | Sim |
+| **RF16** — Calcular e exibir a ofensiva | UC07 · Concluir atividade / UC09 · Consultar painel de desempenho | atividade, membro | Desempenho | Não |
+| **RF17** — Conceder e exibir conquistas | UC07 · Concluir atividade / UC09 · Consultar painel de desempenho | conquista, membro_conquista, membro | Desempenho | Não |
+| **RF18** — Painel de desempenho do grupo | UC09 · Consultar painel de desempenho | membro, atividade, conquista, membro_conquista | Desempenho | Não |
+| **RF19** — Gerar e sortear o avatar do membro | UC02 · Gerenciar membros | membro *(ator externo: DiceBear)* | Membros e Desempenho | Sim |
+| **RF20** — Carregar dados de exemplo | UC12 · Carregar dados de exemplo | grupo, membro, disciplina, conteudo, atividade | Acesso | Sim |
+| **RF21** — Relação dos próximos feriados nacionais | UC08 · Acompanhar progresso | *nenhuma; dado obtido de serviço externo* | Painel | Não |
+| **RF22** — Sinalizar prazo em fim de semana | UC06 · Consultar atividades / UC08 · Acompanhar progresso | atividade | Painel, Atividades e Formulário de atividade | Não |
 
 Os vinte e dois requisitos funcionais possuem caso de uso e tela. Dois não possuem entidade de dados, e em ambos o motivo é o mesmo: o dado não pertence ao domínio. No RF08 a escolha do tema é preferência do dispositivo; no RF21 os feriados vêm de serviço externo e não são armazenados como dado do sistema, apenas reaproveitados enquanto o serviço estiver fora do ar (RN17).
 
@@ -89,6 +89,8 @@ Os vinte e dois requisitos funcionais possuem caso de uso e tela. Dois não poss
 - Todo serviço externo consumido pelo sistema está representado como ator secundário no diagrama de casos de uso e tem comportamento previsto para a sua indisponibilidade: BrasilAPI e Nager.Date (RN17), DiceBear (RN15).
 - Nenhuma tela apresenta funcionalidade que não esteja documentada como requisito. Esta verificação foi refeita em 17/09/2026, percorrendo o código tela a tela; as funcionalidades encontradas sem requisito correspondente originaram os requisitos RF19 a RF22 e as regras RN15 a RN17.
 - Os nomes usados nos requisitos, nos casos de uso, nas classes, nas tabelas e nas telas são os mesmos: grupo, membro, disciplina, conteúdo, atividade, progresso, conquista.
+- Todo requisito marcado como **Sim** na coluna do MVP tem tela prototipada em [`prototipos/`](../prototipos/01-telas-e-navegacao.md), e todo requisito marcado como **Não** não tem — o protótipo cobre o MVP e nada além dele.
+- Toda tarefa do [backlog](12-backlog.md) cita o requisito que a origina; não há tarefa sem requisito nem requisito do MVP sem tarefa.
 
 ---
 
